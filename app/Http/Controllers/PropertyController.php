@@ -143,7 +143,7 @@ class PropertyController extends Controller
 
     public function properties()
     {
-        $properties = Property::paginate(10);
+        $properties = Property::all();
         return view("dashboard.properties.show", ["properties" => $properties]);
     }
 

@@ -149,7 +149,6 @@
                 </tbody>
             </table>
         </div>
-        {{ $properties->links('dashboard.paginate.paginate') }}
     </div>
 @endsection
 @section("script")
@@ -160,7 +159,7 @@
         $(function () {
             $('#props').DataTable({
                 ordering: true,
-                paging: false,
+                paging: true,
                 info: false,
                 scrollX: true,
                 language: {
