@@ -21,7 +21,7 @@
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"
                                      alt="{{$article->image_alt}}" style="height: 160px; width: 100%; display: block;"
-                                     src="{{asset('public/'.$article->image)}}"
+                                     src="{{asset($article->image)}}"
                                      data-holder-rendered="true">
                                 <div class="card-body">
                                     <p class="card-text">{{$article->title}}</p>

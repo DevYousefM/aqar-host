@@ -1,25 +1,24 @@
-@extends("layouts.main")
-@section("content")
+@extends('layouts.main')
+@section('content')
     <!-- Start Slider -->
     <div class="slider position-relative">
         <div id="carouselExample" class="carousel slide">
-            @if(count($slides) > 0)
+            @if (count($slides) > 0)
                 <div class="carousel-inner">
-                        <?php $active = true; ?>
-                    @foreach($slides as $slide)
-
-                        <div class="carousel-item {{$active ? "active" : ""}}">
-                            <img src="{{asset($slide->path)}}" class="d-block w-100" style="height: 60vh;"
-                                 alt="{{$slide->name}}">
+                    <?php $active = true; ?>
+                    @foreach ($slides as $slide)
+                        <div class="carousel-item {{ $active ? 'active' : '' }}">
+                            <img src="{{ asset($slide->path) }}" class="d-block w-100" style="height: 60vh;"
+                                alt="{{ $slide->name }}">
                         </div>
-                            <?php $active = false ?>
+                        <?php $active = false; ?>
                     @endforeach
                 </div>
             @else
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset("public/slides/default.jpg")}}" class="d-block w-100" style="height: 60vh;"
-                             alt="اشتري او بيع مع عقارات مصر">
+                        <img src="{{ asset('slides/default.jpg') }}" class="d-block w-100" style="height: 60vh;"
+                            alt="اشتري او بيع مع عقارات مصر">
                     </div>
                 </div>
             @endif
@@ -33,11 +32,11 @@
             </button>
         </div>
         <form action="{{ route('home') }}"
-              class="form d-flex justify-content-around gap-3 flex-column flex-lg-row flex-md-row shadow bg-white rounded p-3 position-absolute"
-              method="GET">
-            @if(auth()->user())
+            class="form d-flex justify-content-around gap-3 flex-column flex-lg-row flex-md-row shadow bg-white rounded p-3 position-absolute"
+            method="GET">
+            @if (auth()->user())
                 <div class="btn sec-main-btn d-block d-lg-none d-md-none">
-                    <a href="{{route("property.create")}}" class="text-white">اضافة عقار جديد</a>
+                    <a href="{{ route('property.create') }}" class="text-white">اضافة عقار جديد</a>
                 </div>
             @endif
             <div class="dropdown">
@@ -67,14 +66,14 @@
             </div>
             <div class="dropdown">
                 <select class="form-select w-100 text-end no-local" name="gov" id="govs"
-                        aria-labelledby="dropdownMenuButton1">
+                    aria-labelledby="dropdownMenuButton1">
                     <option value="" disabled selected>المحافظة</option>
                     <option value="">أي محافظة</option>
                 </select>
             </div>
             <div class="dropdown">
                 <select class="form-select w-100 text-end no-local" id="areas" name="area"
-                        aria-labelledby="dropdownMenuButton1">
+                    aria-labelledby="dropdownMenuButton1">
                     <option value="" disabled selected>المنطقة</option>
                     <option value="">اي منطقة</option>
 
@@ -83,7 +82,7 @@
             <div class="search d-flex gap-2">
                 <input class="border rounded pe-2" type="search" name="search" id="">
                 <button type="submit" class="btn p-2 rounded bg-danger pill text-white d-flex align-items-center"
-                        href=""><i class="fa-solid fa-magnifying-glass"></i></button>
+                    href=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </form>
 
@@ -95,28 +94,27 @@
         <div class="col-12">
             <h2 class="text-center mb-5">احدث الاعلانات</h2>
             <div class="container-fluid d-flex flex-nowrap adpage justify-content-between flex-nowrap">
-                @include("advertisements.right")
+                @include('advertisements.right')
 
                 <div class="row mx-1 " style="width: 100%">
 
-                    @foreach($ads as $ad)
+                    @foreach ($ads as $ad)
                         <div class="col-md-6 col-lg-4 mb-4 position-relative">
-                            @if($ad->is_special)
+                            @if ($ad->is_special)
                                 <div class="specialTag">
                                     <strong style="color: red">اعلان مميز</strong>
                                     <i class="fas fa-star " style="color: gold"></i>
                                 </div>
                             @endif
                             <div class="card">
-                                <img class="card-img-top"
-                                     src="{{ asset("public/property_images/". $ad->images[0]->path)}}" alt="">
+                                <img class="card-img-top" src="{{ asset('property_images/' . $ad->images[0]->path) }}"
+                                    alt="">
                                 <div class="card-body">
-                                    <h4 class="card-title text-trunc trunc-2">{{$ad->title}}...</h4>
-                                    <p class="card-text text-trunc trunc-3">{{$ad->brief}}</p>
+                                    <h4 class="card-title text-trunc trunc-2">{{ $ad->title }}...</h4>
+                                    <p class="card-text text-trunc trunc-3">{{ $ad->brief }}</p>
                                     <div class=" d-block m-auto">
-                                        <a class="d-block m-auto btn main-btn btn-sm"
-                                           style="font-size: 12px"
-                                           href="{{route("property.show",['id'=>$ad->id,'name'=>$ad->title])}}">قراءة
+                                        <a class="d-block m-auto btn main-btn btn-sm" style="font-size: 12px"
+                                            href="{{ route('property.show', ['id' => $ad->id, 'name' => $ad->title]) }}">قراءة
                                             المزيد</a>
                                     </div>
                                 </div>
@@ -124,7 +122,7 @@
                         </div>
                     @endforeach
                 </div>
-                @include("advertisements.left")
+                @include('advertisements.left')
             </div>
 
             <nav aria-label="Page navigation example">
