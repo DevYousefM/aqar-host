@@ -52,6 +52,9 @@ Route::get('/', function (Request $request) {
     return view('welcome', ["ads" => $ads, "slides" => $slides, "left_sliders" => $left_sliders, "right_sliders" => $right_sliders]);
 })->name("home");
 
+Route::get('/only-test', function () {
+    return "test";
+});
 Route::get('/companies', [FrontController::class, 'show_companies'])->name('companies.show');
 Route::get('/im-property', [FrontController::class, 'im_property'])->name('im.property');
 Route::get('/find-your-property', [SearchRequestsController::class, 'search_request_form'])->name('search_request_form.show');
