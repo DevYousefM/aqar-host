@@ -17,7 +17,7 @@
         <div class="container">
 
             <div class="box">
-                <h4 class="border-bottom border-2 border-danger pb-1 d-inline-block"> بيانات العقار :</h4>
+                <h4 class="border-bottom border-2 border-danger pb-1 d-inline-block"> بيانات العقار المطلوب :</h4>
                 <form class="d-flex flex-column align-items-center gap-2" method="POST"
                       action="{{ route('store.request') }}">
                     @method('POST')
@@ -77,7 +77,7 @@
 
                     <div id="price" style="display: flex !important;"
                          class="flex-column align-items-center gap-2 w-100">
-                        <label class="mt-2" for="price">السعر / قيمة الايجار</label>
+                        <label class="mt-2" for="price">السعر</label>
                         <input value="{{ old('price') }}" class="w-75 p-1 border" type="number" name="price">
                     </div>
                     @error('price')
