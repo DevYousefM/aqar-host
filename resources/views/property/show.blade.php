@@ -18,6 +18,8 @@
                             <div class="mySlides m-3 rounded">
                                 <img class="rounded big-img" src="{{ asset('property_images/' . $img->path) }}"
                                     style="width: 100%;">
+                                <span class="logo-tag"></span>
+
                             </div>
                         @endforeach
 
@@ -82,10 +84,14 @@
                         @foreach ($slides as $e)
                             <div class="item">
                                 <div class="card" style="width: 18rem;">
-                                    <img style="height: 135px" width="100%"
-                                        src="
+                                    <div style="height: 135px;width:100%" class="img-container">
+                                        <img style="height: 135px;width:100% !important"
+                                            src="
                                     {{ asset('property_images/' . $e->images[0]->path) }}"
-                                        class="card-img-top" alt="...">
+                                            class="card-img-top" alt="...">
+                                    <span class="logo-tag"></span>
+                                    </div>
+
                                     <div class="card-body">
                                         <h5 class="card-title"
                                             style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
@@ -179,9 +185,7 @@
             margin: 20,
             autoWidth: true,
             rtl: true,
-            autoplay: true,
-            autoplayTimeout: 2000,
-            autoplayHoverPause: true,
+            
             loop: true,
             responsiveClass: true,
             responsive: {

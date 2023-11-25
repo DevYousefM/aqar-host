@@ -107,8 +107,11 @@
                                 </div>
                             @endif
                             <div class="card">
-                                <img class="card-img-top" src="{{ asset('property_images/' . $ad->images[0]->path) }}"
-                                    alt="">
+                                <div class="img-container">
+                                    <img class="card-img-top" src="{{ asset('property_images/' . $ad->images[0]->path) }}"
+                                        alt="">
+                                    <span class="logo-tag"></span>
+                                </div>
                                 <div class="card-body">
                                     <h4 class="card-title text-trunc trunc-2">{{ $ad->title }}...</h4>
                                     <p class="card-text text-trunc trunc-3">{{ $ad->brief }}</p>
