@@ -1,4 +1,7 @@
 @extends('dashboard.layouts.main')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+@endsection
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -161,7 +164,7 @@
     <script>
         $(function() {
             $('#props').DataTable({
-                ordering: false,
+                // ordering: false,
                 paging: true,
                 "bLengthChange": false,
                 info: false,
