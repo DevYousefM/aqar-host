@@ -20,20 +20,20 @@
             <table class="table table-bordered" id="props">
                 <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
-                        <th>العنوان</th>
-                        <th>المنطقة</th>
-                        <th>نوع الدفع</th>
-                        <th>السعر/المقدم</th>
-                        <th>بيانات اخري</th>
-                        <th>بيانات المستخدم</th>
-                        <th>المشاهدات</th>
-                        <th>صور العقار</th>
-                        @if ($edit || $delete)
-                            <th>تعديل/حذف</th>
-                        @endif
+                        <th style="font-size: 12px" style="width: 10px">#</th>
+                        <th style="font-size: 12px">العنوان</th>
+                        <th style="font-size: 12px">المنطقة</th>
+                        <th style="font-size: 12px">نوع الدفع</th>
+                        <th style="font-size: 12px">السعر/المقدم</th>
+                        <th style="font-size: 12px">بيانات اخري</th>
+                        <th style="font-size: 12px">بيانات المستخدم</th>
+                        <th style="font-size: 12px">المشاهدات</th>
+                        <th style="font-size: 12px">صور العقار</th>
                         @if ($edit)
-                            <th>تمييز/ازالة</th>
+                            <th style="font-size: 12px">تمييز/ازالة</th>
+                        @endif
+                        @if ($edit || $delete)
+                            <th style="font-size: 12px">تعديل/حذف</th>
                         @endif
                     </tr>
                 </thead>
@@ -49,64 +49,60 @@
                             </td>
                             <td>
                                 <a href="{{ route('property.show', $property->id) }}">
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" class="btn btn-sm btn-info">
                                         عرض العقار
                                     </button>
                                 </a>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal"
                                     data-target="#user-{{ $count }}">
                                     عرض
                                 </button>
                             </td>
                             <td>
-                                {{$property->seen}}
+                                {{ $property->seen }}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal"
                                     data-target="#imgs-{{ $count }}">
                                     عرض
                                 </button>
                             </td>
-
-
-                            @if ($edit || $delete)
-                                <td>
-                                    @if ($edit)
-                                        <a href="{{ route('edit.property', $property->id) }}" class="btn  btn-success">
-                                            تعديل
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    @endif
-                                    @if ($delete)
-                                        <a href="{{ route('delete.property', $property->id) }}" class="btn  btn-danger">
-                                            حذف
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    @endif
-                                </td>
-                            @endif
                             @if ($edit)
                                 <td>
-                                    {{--                                toggle.property.special --}}
                                     @if ($property->is_special)
                                         <a href="{{ route('toggle.property.special', $property->id) }}"
-                                            class="btn  btn-danger">
+                                            class="btn btn-sm btn-danger">
                                             جعله غير مميز
                                             <i class="fas fa-star-half"></i>
                                         </a>
                                     @endif
                                     @if (!$property->is_special)
                                         <a href="{{ route('toggle.property.special', $property->id) }}"
-                                            class="btn  btn-success">
+                                            class="btn btn-sm btn-success">
                                             جعله مميز
                                             <i class="fas fa-star"></i>
                                         </a>
                                     @endif
                                 </td>
                             @endif
-
+                            @if ($edit || $delete)
+                                <td>
+                                    @if ($edit)
+                                        <a href="{{ route('edit.property', $property->id) }}"
+                                            class="btn btn-sm btn-success">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    @endif
+                                    @if ($delete)
+                                        <a href="{{ route('delete.property', $property->id) }}"
+                                            class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    @endif
+                                </td>
+                            @endif
                         </tr>
 
                         <div class="modal fade" id="user-{{ $count }}">
