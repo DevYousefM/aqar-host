@@ -125,19 +125,18 @@ class PropertyController extends Controller
             'title' => 'required|string|max:255',
             'brief' => 'required|string',
         ]);
-        // Create a new property instance
         $property->update([
             'title' => $request->title ?? $property->title,
             'brief' => $request->brief ?? $property->brief,
         ]);
         return redirect()->route("admin.properties")->with("success", "تم تعديل العقار وسيتم عرضه في صفحة الأعلانات");
-
     }
 
     public function show($id)
     {
         $property = Property::findOrFail($id);
         $slides = Property::latest()->take(6)->get();
+        $property->update(["seen" => $property->seen + 1]);
         return view("property.show", compact("property", "slides"));
     }
 

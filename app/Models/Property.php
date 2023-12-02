@@ -26,8 +26,9 @@ class Property extends Model
         'payment',
         'presenter',
         'price',
+        "seen",
         'is_special',
-        "created_at"
+        "created_at",
     ];
 
     public function images(): HasMany

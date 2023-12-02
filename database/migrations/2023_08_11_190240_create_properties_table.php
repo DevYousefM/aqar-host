@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->string("payment");
             $table->integer("presenter")->nullable();
             $table->integer("price")->nullable();
+            $table->integer("seen")->default(0);
             $table->boolean("is_special")->default(false);
             $table->timestamps();
         });

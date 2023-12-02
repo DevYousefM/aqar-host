@@ -16,10 +16,10 @@
 
                         @foreach ($property->images as $img)
                             <div class="mySlides m-3 rounded">
-                                <img class="rounded big-img" src="{{ asset('property_images/' . $img->path) }}"
-                                    style="width: 100%;">
-                                <span class="logo-tag"></span>
-
+                                <div class="big-img-container">
+                                    <img class="rounded big-img" src="{{ asset('property_images/' . $img->path) }}">
+                                    <span class="logo-tag"></span>
+                                </div>
                             </div>
                         @endforeach
 
@@ -31,7 +31,7 @@
                             <?php $count = 1; ?>
                             @foreach ($property->images as $img)
                                 <div class="column">
-                                    <img class="demo cursor" src="{{ asset('property_images/' . $img->path) }}"
+                                    <img class="demo small-img cursor" src="{{ asset('property_images/' . $img->path) }}"
                                         style="width:100%" onclick="currentSlide({{ $count }})">
                                 </div>
                                 <?php $count++; ?>
@@ -89,7 +89,7 @@
                                             src="
                                     {{ asset('property_images/' . $e->images[0]->path) }}"
                                             class="card-img-top" alt="...">
-                                    <span class="logo-tag"></span>
+                                        <span class="logo-tag"></span>
                                     </div>
 
                                     <div class="card-body">
@@ -185,7 +185,7 @@
             margin: 20,
             autoWidth: true,
             rtl: true,
-            
+
             loop: true,
             responsiveClass: true,
             responsive: {

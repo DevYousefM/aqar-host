@@ -2,12 +2,12 @@
     <div id="result" class="alert alert-danger alert-dismissible" role="alert">
         {{ session('message') }}
     </div>
+    <script>
+        let result = document.getElementById("result");
+        if (result) {
+            setTimeout(() => {
+                result.remove();
+            }, 5000);
+        }
+    </script>
 @endif
-<script>
-    let result = document.getElementById("result");
-    if (result) {
-        setTimeout(() => {
-            result.remove();
-        }, 5000);
-    }
-</script>

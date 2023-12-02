@@ -49,6 +49,10 @@
                                     </x-primary-button>
                                 </div>
                             @endif
+                            <p style="margin-bottom: 10px;text-align: center;font-size: 18px">
+                                عدد زيارات صفحة
+                                العقار: {{$property->seen}} زيارات
+                            </p>
                         </div>
                         @if(auth()->user()->account_type === "personal")
 

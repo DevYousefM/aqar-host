@@ -27,6 +27,7 @@
                         <th>السعر/المقدم</th>
                         <th>بيانات اخري</th>
                         <th>بيانات المستخدم</th>
+                        <th>المشاهدات</th>
                         <th>صور العقار</th>
                         @if ($edit || $delete)
                             <th>تعديل/حذف</th>
@@ -58,6 +59,9 @@
                                     data-target="#user-{{ $count }}">
                                     عرض
                                 </button>
+                            </td>
+                            <td>
+                                {{$property->seen}}
                             </td>
                             <td>
                                 <button type="button" class="btn btn-outline-dark" data-toggle="modal"

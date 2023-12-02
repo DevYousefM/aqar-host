@@ -8,7 +8,7 @@
                     <?php $active = true; ?>
                     @foreach ($slides as $slide)
                         <div class="carousel-item {{ $active ? 'active' : '' }}">
-                            <img src="{{ asset($slide->path) }}" class="d-block w-100" style="height: 60vh;"
+                            <img src="{{ asset($slide->path) }}" class="d-block w-100 slides-imgs"
                                 alt="{{ $slide->name }}">
                         </div>
                         <?php $active = false; ?>
@@ -17,7 +17,7 @@
             @else
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('slides/default.jpg') }}" class="d-block w-100" style="height: 60vh;"
+                        <img src="{{ asset('slides/default.jpg') }}" class="d-block w-100" style="height: unset;"
                             alt="اشتري او بيع مع عقارات مصر">
                     </div>
                 </div>
@@ -31,8 +31,12 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+    </div>
+    <!-- End Slider -->
+
+    <div class="form-container">
         <form action="{{ route('home') }}"
-            class="form d-flex justify-content-around gap-3 flex-column flex-lg-row flex-md-row shadow bg-white rounded p-3 position-absolute"
+            class="form d-flex justify-content-around gap-3 flex-column flex-lg-row flex-md-row shadow bg-white rounded p-3"
             method="GET">
             @if (auth()->user())
                 <div class="btn sec-main-btn d-block d-lg-none d-md-none">
@@ -76,7 +80,6 @@
                     aria-labelledby="dropdownMenuButton1">
                     <option value="" disabled selected>المنطقة</option>
                     <option value="">اي منطقة</option>
-
                 </select>
             </div>
             <div class="search d-flex gap-2">
@@ -85,9 +88,7 @@
                     href=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </form>
-
     </div>
-    <!-- End Slider -->
 
     <!-- Start Advertisement -->
     <div class="advertisement">
