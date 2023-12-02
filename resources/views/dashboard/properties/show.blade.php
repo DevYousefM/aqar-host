@@ -37,12 +37,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $count = 1; ?>
                     @foreach ($properties as $property)
                         <tr>
                             <td>
-                                {{ $count }}
-                                <br>
                                 <span style="font-size: 15px" class="d-flex align-items-center">
                                     {{ $property->seen }}
                                     <i class="fas fa-eye mr-1"></i>
@@ -151,7 +148,6 @@
                                 </div>
                             </div>
                         </div>
-                        <?php $count++; ?>
                     @endforeach
                 </tbody>
             </table>
