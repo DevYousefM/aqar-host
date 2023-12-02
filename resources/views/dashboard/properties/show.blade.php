@@ -44,8 +44,8 @@
                                 {{ $count }}
                                 <br>
                                 <span style="font-size: 15px" class="d-flex align-items-center">
-                                    ( {{ $property->seen }}
-                                    <i class="fas fa-eye mr-1" ></i> )
+                                    {{ $property->seen }}
+                                    <i class="fas fa-eye mr-1"></i>
                                 </span>
                             </td>
                             <td>{{ $property->title }}</td>
