@@ -27,7 +27,6 @@
                         <th style="font-size: 12px">السعر/المقدم</th>
                         <th style="font-size: 12px">بيانات اخري</th>
                         <th style="font-size: 12px">بيانات المستخدم</th>
-                        <th style="font-size: 12px">المشاهدات</th>
                         <th style="font-size: 12px">صور العقار</th>
                         @if ($edit)
                             <th style="font-size: 12px">تمييز/ازالة</th>
@@ -41,7 +40,14 @@
                     <?php $count = 1; ?>
                     @foreach ($properties as $property)
                         <tr>
-                            <td>{{ $count }}</td>
+                            <td>
+                                {{ $count }}
+                                <br>
+                                <span style="font-size: 15px" class="d-flex align-items-center">
+                                    ( {{ $property->seen }}
+                                    <i class="fas fa-eye mr-1" ></i> )
+                                </span>
+                            </td>
                             <td>{{ $property->title }}</td>
                             <td>{{ $property->area }}</td>
                             <td>{{ $property->payment }}</td>
@@ -59,9 +65,6 @@
                                     data-target="#user-{{ $count }}">
                                     عرض
                                 </button>
-                            </td>
-                            <td>
-                                {{ $property->seen }}
                             </td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal"
