@@ -37,6 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $count = 1; ?>
                     @foreach ($properties as $property)
                         <tr>
                             <td>
@@ -148,6 +149,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php $count++; ?>
                     @endforeach
                 </tbody>
             </table>
