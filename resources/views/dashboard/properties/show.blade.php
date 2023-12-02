@@ -163,7 +163,7 @@
     <script>
         $(function() {
             $('#props').DataTable({
-                ordering: true,
+                ordering: false,
                 paging: true,
                 "bLengthChange": false,
                 info: false,
