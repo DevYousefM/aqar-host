@@ -75,14 +75,12 @@
                                     @if ($property->is_special)
                                         <a href="{{ route('toggle.property.special', $property->id) }}"
                                             class="btn btn-sm btn-danger">
-                                            جعله غير مميز
                                             <i class="fas fa-star-half"></i>
                                         </a>
                                     @endif
                                     @if (!$property->is_special)
                                         <a href="{{ route('toggle.property.special', $property->id) }}"
                                             class="btn btn-sm btn-success">
-                                            جعله مميز
                                             <i class="fas fa-star"></i>
                                         </a>
                                     @endif
