@@ -20,7 +20,8 @@ class FrontController extends Controller
         $left_sliders = Slider::where("place", "left")->get();
         $right_sliders = Slider::where("place", "right")->get();
         $banners = CompanyBanner::all();
-        return view("pages.companies", ["companies" => $im_companies, "left_sliders" => $left_sliders, "right_sliders" => $right_sliders, "banners" => $banners]);
+        // return view("pages.companies", ["companies" => $im_companies, "left_sliders" => $left_sliders, "right_sliders" => $right_sliders, "banners" => $banners]);
+        return $im_companies;
     }
 
     public function im_property()

@@ -22,11 +22,9 @@
         <h2 class="text-center mt-5">الشركات</h2>
         <div class="container-fluid d-flex flex-nowrap justify-content-between flex-nowrap">
             @include('advertisements.right')
-
             <div class="row company mx-1" style="width: inherit">
                 @foreach ($companies as $com)
                     <div class="col-md-6 col-lg-3 mb-4" href="{{ route('company.profile', $com->company_name) }}">
-
                         <div class="feat mb-3 rounded">
                             <a href="{{ route('company.profile', $com->company_name) }}">
                                 <img class="mb-3  rounded-top"
