@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'عقار مصر | الرئيسية')</title>
     <meta name="keywords"
         content="عقار-مصر, عقارات-للبيع-مصر, شقق-للبيع-من-المالك,
     بيع-عقارات-فى-مصر, شراء-عقارات-فى-مصر, عقارات-للبيع-فى-مصر,
@@ -12,7 +13,9 @@
     , شقق-استلام-فورى, شقق-للبيع-من-المالك-مباشر, افضل-موقع-للعقارات-فى-مصر, سمسار-مصر
     , شقق-للبيع-فى-القاهرة-بالتقسيط, شقق-للايجار-فى-مصر, عقار-مصر-للايجار, بيع-وحدتى,
     مواقع-بيع-العقارات-فى-مصر, بيع-شقتى, افضل-مواقع-بيع-عقارات, اسرع-موقع-لبيع-العقارات ">
-    <meta property="og:image" content="https://aqar-masr.com/img/logo.svg" />
+    <meta property="image" content="https://aqar-masr.com/img/logo.svg" />
+    <meta property="description"
+        content="خدمات عقار مصر هي خدمه مجانية تساعدك على بيع وشراء العقارات بسهولة و توصلك بالبائع مباشرةً بدون اي وسيط وتزودك بالمعلومات الأساسية لإتخاذ واحد من أهم القرارات ...">
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
@@ -23,7 +26,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Parisienne&display=swap"
         rel="stylesheet">
-    <title>@yield('title', 'عقار مصر | الرئيسية')</title>
 </head>
 
 <body>
