@@ -12,6 +12,7 @@
     , شقق-استلام-فورى, شقق-للبيع-من-المالك-مباشر, افضل-موقع-للعقارات-فى-مصر, سمسار-مصر
     , شقق-للبيع-فى-القاهرة-بالتقسيط, شقق-للايجار-فى-مصر, عقار-مصر-للايجار, بيع-وحدتى,
     مواقع-بيع-العقارات-فى-مصر, بيع-شقتى, افضل-مواقع-بيع-عقارات, اسرع-موقع-لبيع-العقارات ">
+    <meta property="og:image" content="https://aqar-masr.com/img/logo.svg" />
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
