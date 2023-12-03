@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'عقـــار مصر | الرئيسية')</title>
+    <title>@yield('title', 'عقار مصر | الرئيسية')</title>
     <meta name="keywords"
         content="عقار-مصر, عقارات-للبيع-مصر, شقق-للبيع-من-المالك,
     بيع-عقارات-فى-مصر, شراء-عقارات-فى-مصر, عقارات-للبيع-فى-مصر,
