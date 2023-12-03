@@ -24,20 +24,22 @@
             @include('advertisements.right')
             <div class="row company mx-1" style="width: inherit">
                 @foreach ($companies as $com)
-                    <div class="col-md-6 col-lg-3 mb-4" href="{{ route('company.profile', $com->company_name) }}">
-                        <div class="feat mb-3 rounded">
-                            <a href="{{ route('company.profile', $com->company_name) }}">
-                                <img class="mb-3  rounded-top"
-                                    src="{{ $com->image && $com->image !== '#' ? asset($com->image) : asset('img/default.svg') }}"
-                                    height="30" alt="">
-                            </a>
-                            <div class="title" style="padding-left: 7px; padding-bottom: 12px; padding-right: 7px;">
-                                <h4 class="fs-6  fw-bold"><a
-                                        href="{{ route('company.profile', $com->company_name) }}">{{ $com->company_name }}</a>
-                                </h4>
+                    @if ($com->company_name)
+                        <div class="col-md-6 col-lg-3 mb-4" href="{{ route('company.profile', $com->company_name) }}">
+                            <div class="feat mb-3 rounded">
+                                <a href="{{ route('company.profile', $com->company_name) }}">
+                                    <img class="mb-3  rounded-top"
+                                        src="{{ $com->image && $com->image !== '#' ? asset($com->image) : asset('img/default.svg') }}"
+                                        height="30" alt="">
+                                </a>
+                                <div class="title" style="padding-left: 7px; padding-bottom: 12px; padding-right: 7px;">
+                                    <h4 class="fs-6  fw-bold"><a
+                                            href="{{ route('company.profile', $com->company_name) }}">{{ $com->company_name }}</a>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
                 <nav aria-label="Page navigation example">
                     {{ $companies->links('pagination.custom') }}
