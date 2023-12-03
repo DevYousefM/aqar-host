@@ -15,7 +15,7 @@
     مواقع-بيع-العقارات-فى-مصر, بيع-شقتى, افضل-مواقع-بيع-عقارات, اسرع-موقع-لبيع-العقارات ">
     <meta property="image" content="https://aqar-masr.com/img/logo.svg" />
     <meta property="description"
-        content="خدمات عقار مصر هي خدمه مجانية تساعدك على بيع وشراء العقارات بسهولة و توصلك بالبائع مباشرةً بدون اي وسيط وتزودك بالمعلومات الأساسية لإتخاذ واحد من أهم القرارات ...">
+        content="خدمات عقار مصر هي خدمه مجانية تساعدك على بيع وشراء العقارات بسهولة و توصلك بالبائع مباشرةً بدون اي وسيط وايضاً تزودك بالمعلومات الأساسية لإتخاذ واحد من أهم القرارات ...">
     <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
