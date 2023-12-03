@@ -52,13 +52,15 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    public function update_brief(Request $request)
+    public function update_company(Request $request)
     {
         $request->validate([
             'company_brief' => ["nullable", 'string', 'max:500'],
+            'company_name' => ["required", 'string', 'max:500'],
         ]);
         auth()->user()->update([
-            "company_brief" => $request->company_brief
+            "company_brief" => $request->company_brief,
+            "company_name" => $request->company_name
         ]);
         return Redirect::route('profile.edit')->with('status', 'update-brief');
     }

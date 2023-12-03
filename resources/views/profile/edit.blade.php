@@ -13,9 +13,9 @@
                 </div>
             </div>
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg sm:w-1/5">
-                @if(auth()->user()->account_type === "company")
+                @if (auth()->user()->account_type === 'company')
                     <div class="max-w-xl mt-1">
-                        @include('profile.partials.update-brief-form')
+                        @include('profile.partials.update-company-form')
                     </div>
                 @endif
             </div>
