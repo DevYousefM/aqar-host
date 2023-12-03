@@ -12,6 +12,7 @@
     , شقق-استلام-فورى, شقق-للبيع-من-المالك-مباشر, افضل-موقع-للعقارات-فى-مصر, سمسار-مصر
     , شقق-للبيع-فى-القاهرة-بالتقسيط, شقق-للايجار-فى-مصر, عقار-مصر-للايجار, بيع-وحدتى,
     مواقع-بيع-العقارات-فى-مصر, بيع-شقتى, افضل-مواقع-بيع-عقارات, اسرع-موقع-لبيع-العقارات ">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -38,6 +39,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-050PDDFFXJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
