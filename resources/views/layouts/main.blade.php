@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
+    <meta name="og:description"
         content="
         خدمات عقار مصر0 هي خدمه مجانية تساعدك على بيع وشراء العقارات بسهولة و توصلك بالبائع مباشرةً بدون اي وسيط وتزودك بالمعلومات الأساسية لإتخاذ واحد من أهم القرارات...
         ">
