@@ -80,7 +80,8 @@
 
 
                     <label class="mt-2" id="rooms_title" for="rooms">عدد الغرف</label>
-                    <input value="{{ old('rooms') }}" id="rooms" class="w-75 p-1 border" type="number" name="rooms">
+                    <input value="{{ old('rooms') }}" id="rooms" class="w-75 p-1 border" type="number"
+                        name="rooms">
                     @error('rooms')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -129,6 +130,15 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                     <div id="imageFilenames" class="d-flex gap-3"></div>
+                    @if ($errors->has('images.*'))
+                        <ul>
+                            @foreach ($errors->get('images.*') as $index => $errorMessages)
+                                @foreach ($errorMessages as $error)
+                                    <li>الصورة {{ (int) $index + 1 }}: {{ $error }}</li>
+                                @endforeach
+                            @endforeach
+                        </ul>
+                    @endif
 
                     @if (auth()->user()->has_special)
                         <div class="form-checkbox ">

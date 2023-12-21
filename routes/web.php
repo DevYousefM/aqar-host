@@ -59,7 +59,7 @@ Route::get('/call-us', [FrontController::class, 'call_us'])->name('call.us');
 Route::get('/company-profile/{name}', [FrontController::class, 'company_profile'])->name('company.profile');
 Route::post('/send-message', [FrontController::class, 'send_message'])->name('send.message');
 Route::get('/news', [ArticleController::class, 'articles'])->name('show.articles');
-Route::get('/news/{id}', [ArticleController::class, 'show_article'])->name('show.single.article');
+Route::get('/news/{id}/{name?}', [ArticleController::class, 'show_article'])->name('show.single.article');
 Route::get('/plans', [FrontController::class, 'plans'])->name('front.plans');
 Route::get('/company-plans', [FrontController::class, 'company_plans'])->name('company.plans');
 Route::get('/services', [FrontController::class, 'single_services'])->name('single.services');

@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <ul class="pagination p-0 justify-content-center">
+    <ul class="pagination p-0 px-2 justify-content-center flex-wrap">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <li class="page-item">
@@ -7,7 +7,7 @@
             </li>
         @else
             <li class="page-item">
-                <a href="{{$paginator->previousPageUrl()}}" class="pagin page-link" rel="prev">السابق</a>
+                <a href="{{ $paginator->previousPageUrl() }}" class="pagin page-link" rel="prev">السابق</a>
             </li>
         @endif
 
@@ -16,7 +16,6 @@
             {{-- "Three Dots" Separator --}}
             @if (is_string($element))
                 <li class="page-item"><span class="pagin page-link">{{ $element }}</span></li>
-
             @endif
 
             {{-- Array Of Links --}}
@@ -24,10 +23,10 @@
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
                         <li class="page-item"><span class="pagin page-link"
-                                                    style="background-color: red;color:white">{{ $page }}</span></li>
-
+                                style="background-color: red;color:white">{{ $page }}</span></li>
                     @else
-                        <li class="page-item"><a class="pagin page-link" href="{{ $url }}">{{ $page }}</a></li>
+                        <li class="page-item"><a class="pagin page-link"
+                                href="{{ $url }}">{{ $page }}</a></li>
                     @endif
                 @endforeach
             @endif

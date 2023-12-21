@@ -55,6 +55,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputFName"> اسم الURL</label>
+                            <input type="text" class="form-control"
+                                   id="exampleInputFName" placeholder="" name="url_name"
+                                   value="{{ old('url_name') }}">
+                            @error('url_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>نص المقال</label>
                             <textarea class="form-control ckeditor" name="body" rows="3"
                                       placeholder="نص المقال هنا">{{ old("body") }}</textarea>

@@ -33,7 +33,7 @@ return [
     'different' => 'يجب أن يكون الحقلان :attribute و :other مُختلفين.',
     'digits' => 'يجب أن يحتوي حقل :attribute على :digits رقمًا/أرقام.',
     'digits_between' => 'يجب أن يحتوي حقل :attribute بين :min و :max رقمًا/أرقام .',
-    'dimensions' => 'الحقل:attribute يحتوي على أبعاد صورة غير صالحة.',
+    'dimensions' => 'ابعاد الصورة غير صالحة',
     'distinct' => 'للحقل :attribute قيمة مُكرّرة.',
     'doesnt_end_with' => 'الحقل :attribute يجب ألّا ينتهي بأحد القيم التالية: :values.',
     'doesnt_start_with' => 'الحقل :attribute يجب ألّا يبدأ بأحد القيم التالية: :values.',
@@ -251,6 +251,11 @@ return [
         "youtube_ads_num" => "عدد اعلانات علي اليوتيوب",
         "google_ads_num" => "عدد الاعلانات علي جوجل",
         "place" => "المكان",
-        "delete_date" => "تاريخ الحذف التلقائى"
+        "delete_date" => "تاريخ الحذف التلقائى",
+        "user_name" => "الاسم",
+        "user_email" => "البريد الالكتروني للمستخدم",
+        "user_password" => "كلمة المرور للمستخدم",
+        "user_phone" => "رقم هاتف المستخدم",
+        "user_ulid" => "المستخدم"
     ],
 ];

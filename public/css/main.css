@@ -167,8 +167,8 @@ img {
 }
 
 .advertisement img {
-    height: 150px;
-    /*max-width: 100%;*/
+    width: 100%;
+    height: unset;
 }
 
 .advertisement a {
@@ -724,8 +724,7 @@ img {
         width: 6rem !important;
     }
     .header ul {
-        flex-wrap: wrap !important;
-        flex-direction: unset !important;
+        flex-direction: column !important;
         justify-content: flex-end;
     }
     .slides-imgs {

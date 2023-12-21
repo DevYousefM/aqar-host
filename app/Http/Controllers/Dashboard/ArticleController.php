@@ -26,6 +26,7 @@ class ArticleController extends Controller
             'title' => 'required|string|max:150',
             'body' => 'required|string',
             'title_seo' => 'required|string|max:255',
+            'url_name' => 'required|string|max:255',
             'image_alt' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'brief' => 'required|string|max:400',
@@ -39,6 +40,7 @@ class ArticleController extends Controller
         $updating = $article->update([
             "title" => $request->title,
             "title_seo" => $request->title_seo,
+            "url_name" => $request->url_name,
             "body" => $request->body,
             "image" => $path ?? $article->image,
             "image_alt" => $request->image_alt,
@@ -63,6 +65,7 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:150',
             'title_seo' => 'required|string|max:255',
+            'url_name' => 'required|string|max:255',
             'body' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image_alt' => 'required|string|max:255',
@@ -72,6 +75,7 @@ class ArticleController extends Controller
         $article = Article::create([
             "title" => $request->title,
             "title_seo" => $request->title_seo,
+            "url_name" => $request->url_name,
             "body" => $request->body,
             "image" => $path,
             "image_alt" => $request->image_alt,
@@ -79,7 +83,6 @@ class ArticleController extends Controller
         ]);
         if (!$article) {
             return redirect()->back()->with("message", "لم يتم اضافة المقال");
-
         }
         return redirect()->back()->with("success", "تم أضافة المقال وسوف يتم عرضه في صفحة اخبار العقارات");
     }

@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->text("title");
             $table->text("title_seo");
+            $table->text("url_name");
             $table->string("image");
             $table->text("image_alt");
             $table->text("brief");

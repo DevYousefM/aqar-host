@@ -1,8 +1,6 @@
-
-@extends("dashboard.layouts.main")
+@extends('dashboard.layouts.main')
 @section('css')
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <style>
         .filter-option-inner {
             text-align: right;
@@ -25,8 +23,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard.admin') }}">الرئيسية</a></li>
-                        <li class="breadcrumb-item"><a
-                                href="#">العقارات</a></li>
+                        <li class="breadcrumb-item"><a href="#">العقارات</a></li>
                         <li class="breadcrumb-item active">تعديل عقار</li>
                     </ol>
                 </div>
@@ -41,33 +38,29 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                @include("dashboard.components.includes.error")
-                @include("dashboard.components.includes.success")
-                @include("dashboard.components.includes.message")
-                <form role="form" action="{{route("store.properties.admin")}}"
-                      method="post"
-                      enctype="multipart/form-data">
-                    @method("post")
+                @include('dashboard.components.includes.error')
+                @include('dashboard.components.includes.success')
+                @include('dashboard.components.includes.message')
+                <form role="form" action="{{ route('store.properties.admin') }}" method="post"
+                    enctype="multipart/form-data">
+                    @method('post')
                     @csrf
                     <div class="card-body pb-0">
                         <div class="form-group">
                             <label for="exampleInputFName">العنوان</label>
-                            <input type="text" class="form-control"
-                                   id="exampleInputFName" placeholder="العنوان" name="title"
-                                   value="{{ old("title") }}">
+                            <input type="text" class="form-control" id="exampleInputFName" placeholder="العنوان"
+                                name="title" value="{{ old('title') }}">
                             @error('title')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="card-body pb-0" style="padding-top: 0 !important;">
                         <div class="form-group">
                             <label for="exampleInputFName">النبذة</label>
-                            <textarea class="form-control"
-                                      placeholder="النبذة" name="brief"
-                            >{{old("brief")}}</textarea>
+                            <textarea class="form-control" placeholder="النبذة" name="brief">{{ old('brief') }}</textarea>
                             @error('brief')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -88,7 +81,7 @@
                                 <option value='سكن الطلبة'>سكن الطلبة</option>
                             </select>
                             @error('type')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -102,7 +95,7 @@
                                 <option value='ايجار'>ايجار</option>
                             </select>
                             @error('purpose')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -113,7 +106,7 @@
                                 <option selected disabled>اختر المحافظة</option>
                             </select>
                             @error('gov')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -124,7 +117,7 @@
                                 <option selected disabled>اختر المنطقة</option>
                             </select>
                             @error('area')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -136,29 +129,27 @@
                                 <option selected disabled>اختر الدور</option>
                             </select>
                             @error('level')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="card-body pb-0" style="padding-top: 0 !important;">
                         <div class="form-group">
                             <label for="exampleInputFName">عدد الغرف</label>
-                            <input type="number" class="form-control"
-                                   id="exampleInputFName" placeholder="عدد الغرف" name="rooms"
-                                   value="{{ old("rooms") }}">
+                            <input type="number" class="form-control" id="exampleInputFName" placeholder="عدد الغرف"
+                                name="rooms" value="{{ old('rooms') }}">
                             @error('rooms')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="card-body pb-0" style="padding-top: 0 !important;">
                         <div class="form-group">
                             <label for="exampleInputFName">المساحة بالمتر</label>
-                            <input type="number" class="form-control"
-                                   id="exampleInputFName" placeholder="المساحة بالمتر" name="meters"
-                                   value="{{ old("meters") }}">
+                            <input type="number" class="form-control" id="exampleInputFName"
+                                placeholder="المساحة بالمتر" name="meters" value="{{ old('meters') }}">
                             @error('meters')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -169,37 +160,35 @@
                                 <option selected disabled>
                                     اختر اسلوب الدفع
                                 </option>
-                                <option value="كاش" {{old("payment") ===  "كاش" ? "selected" : ""}} >
+                                <option value="كاش" {{ old('payment') === 'كاش' ? 'selected' : '' }}>
                                     كاش
                                 </option>
-                                <option value="قسط" {{old("payment") ===  "قسط" ? "selected" : ""}}>
+                                <option value="قسط" {{ old('payment') === 'قسط' ? 'selected' : '' }}>
                                     قسط
                                 </option>
                             </select>
                             @error('payment')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="card-body pb-0 d-none " style="padding-top: 0 !important; " id="presenter">
                         <div class="form-group">
                             <label for="exampleInputFName">قيمة المقدم</label>
-                            <input type="number" class="form-control"
-                                   id="exampleInputFName" placeholder="قيمة المقدم" name="presenter"
-                                   value="{{ old("presenter") }}">
+                            <input type="number" class="form-control" id="exampleInputFName" placeholder="قيمة المقدم"
+                                name="presenter" value="{{ old('presenter') }}">
                             @error('presenter')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="card-body pb-0 d-none" style=" padding-top: 0 !important;" id="price">
                         <div class="form-group">
                             <label for="exampleInputFName">السعر</label>
-                            <input type="number" class="form-control"
-                                   id="exampleInputFName" placeholder="السعر" name="price"
-                                   value="{{ old("price") }}">
+                            <input type="number" class="form-control" id="exampleInputFName" placeholder="السعر"
+                                name="price" value="{{ old('price') }}">
                             @error('price')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -207,34 +196,82 @@
                     <div class="card-body pb-0" style="padding-top: 0 !important;">
                         <div class="form-group">
                             <label for="images">صور العقار</label>
-                            <input value="{{old("images")}}" id="propertyImages" class="w-100 p-1 border" type="file"
-                                   name="images[]" multiple>
+                            <input value="{{ old('images') }}" id="propertyImages" class="w-100 p-1 border"
+                                type="file" name="images[]" multiple>
                         </div>
                     </div>
                     @error('images')
-                    <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                     <div class="card-body pb-0" style="padding-top: 0 !important;">
-                        <div id="imageFilenames" class="d-flex justify-content-center flex-wrap"
-                             style="gap: 25px"></div>
+                        <div id="imageFilenames" class="d-flex justify-content-center flex-wrap" style="gap: 25px"></div>
                     </div>
-                    <div class="card-body pb-0" style="padding-top: 0 !important;">
-                        <div class="form-group">
-                            <label>المستخدم</label>
-                            <select name="user_ulid" style="height: 40px;" class="border w-100 selectpicker"
-                                    data-live-search="true">
-                                <option selected disabled>المستخدم</option>
-                                @foreach($users as $user)
-                                    <option
-                                        value="{{$user->id}}">{{$user->name}} {{!empty($user->company_name) ? "($user->company_name)" : null }}</option>
-                                @endforeach
-                            </select>
-                            @error('user_ulid')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                    <div class="card-body pb-0 pt-0">
+                        <div class="form-group d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input" id="exist_user" type="radio" name="user_case"
+                                    value="exist_user"
+                                    {{ old('user_case') === 'exist_user' || !old('user_case') ? 'checked' : null }}>
+                                <label class="form-check-label">تحديد مستخدم مسجل</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="new_user" name="user_case"
+                                    value="new_user" {{ old('user_case') === 'new_user' ? 'checked' : null }}>
+                                <label class="form-check-label">أضافة مستخدم</label>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="card-body pb-0" style="padding-top: 0 !important;" id="select_exist_user">
+                        <div class="form-group">
+                            <label>المستخدم</label>
+                            <select name="user_ulid" style="height: 40px;" class="border w-100 selectpicker"
+                                data-live-search="true">
+                                <option selected disabled>المستخدم</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}
+                                        {{ !empty($user->company_name) ? "($user->company_name)" : null }}</option>
+                                @endforeach
+                            </select>
+                            @error('user_ulid')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="card-body pb-0 pt-0" style="display: none" id="new_user_form">
+                        <div class="form-group">
+                            <label for="exampleInputFName">الأسم</label>
+                            <input type="text" class="form-control" id="exampleInputFName" placeholder="الاسم"
+                                name="user_name" value="{{ old('user_name') }}">
+                            @error('user_name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFName">البريد الالكتروني</label>
+                            <input type="email" class="form-control" id="exampleInputFName"
+                                placeholder="البريد الالكتروني" name="user_email" value="{{ old('user_email') }}">
+                            @error('user_email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFName">رقم الهاتف</label>
+                            <input type="text" class="form-control" id="exampleInputFName" placeholder="رقم الهاتف"
+                                name="user_phone" value="{{ old('user_phone') }}">
+                            @error('user_phone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFName">كلمة المرور</label>
+                            <input type="password" class="form-control" id="exampleInputFName" placeholder="كلمة المرور"
+                                name="user_password" value="{{ old('password') }}">
+                            @error('user_password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">اضافة<i class="fa fa-plus"></i></button>
@@ -244,9 +281,8 @@
             <!-- /.card -->
         </div>
     </section>
-
 @endsection
-@section("script")
+@section('script')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
     <script>
@@ -393,7 +429,7 @@
         let fileInput = document.getElementById("propertyImages");
         let filenamesContainer = document.getElementById("imageFilenames");
 
-        fileInput?.addEventListener("change", function (event) {
+        fileInput?.addEventListener("change", function(event) {
             filenamesContainer.innerHTML = "";
 
             let selectedFiles = event.target.files;
@@ -418,6 +454,23 @@
                 filenamesContainer.appendChild(card);
             }
         });
+        let exist_user = document.getElementById('exist_user');
+        let new_user = document.getElementById('new_user');
+        let select_exist_user = document.getElementById("select_exist_user");
+        let new_user_form = document.getElementById("new_user_form");
 
+        handleRadioButtonChange();
+        exist_user.addEventListener('change', handleRadioButtonChange);
+        new_user.addEventListener('change', handleRadioButtonChange);
+
+        function handleRadioButtonChange() {
+            if (exist_user.checked) {
+                select_exist_user.style.display = "block";
+                new_user_form.style.display = "none";
+            } else if (new_user.checked) {
+                select_exist_user.style.display = "none";
+                new_user_form.style.display = "block";
+            }
+        }
     </script>
 @endsection

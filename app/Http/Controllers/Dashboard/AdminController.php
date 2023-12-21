@@ -10,8 +10,10 @@ use App\Models\Property;
 use App\Models\PropertyImage;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Validation\Rules;
 
 class AdminController extends Controller
 {
@@ -38,7 +40,6 @@ class AdminController extends Controller
     public function exportCompanies()
     {
         return Excel::download(new ExportCompany(), 'companies.xlsx');
-
     }
 
 
@@ -51,7 +52,6 @@ class AdminController extends Controller
     public function exportUsers()
     {
         return Excel::download(new ExportUser, 'users.xlsx');
-
     }
 
     public function make_important($id)
@@ -89,7 +89,32 @@ class AdminController extends Controller
 
     public function store_property(Request $request)
     {
-        $user = User::findOrFail($request->user_ulid);
+        if ($request->user_case === "exist_user") {
+            $request->validate([
+                'user_ulid' => 'required|exists:users,id',
+            ], [
+                'user_ulid.*' => 'يجب اختيار مستخدم مسجل',
+            ]);
+            $user = User::find($request->user_ulid);
+        }
+        if ($request->user_case === "new_user") {
+            $request->validate([
+                'user_name' => ['required', 'string', 'max:255'],
+                'user_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'user_phone' => ['required', 'max:11', 'unique:users,phone'],
+                'user_password' => ['required', Rules\Password::defaults()],
+            ]);
+            $user_create = [
+                'name' => $request->user_name,
+                'email' => $request->user_email,
+                'phone' => $request->user_phone,
+                'password' => Hash::make($request->user_password),
+                'account_type' => "personal",
+                "image" => "users_images/default.svg",
+                "property_charge" => 2
+            ];
+            $user = User::create($user_create);
+        }
         $request->validate([
             'title' => 'required|string|max:255',
             'brief' => 'required|string',

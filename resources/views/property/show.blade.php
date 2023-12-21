@@ -169,6 +169,7 @@
                         @if ($property->user->phone_sec)
                             <p class="fs-5 fw-bold">{{ str_replace(' ', '', $property->user->phone_sec) }}</p>
                         @endif
+                        <p>عدد المشاهدات: {{$property->seen}}</p>
                     </div>
                 </div>
             </div>

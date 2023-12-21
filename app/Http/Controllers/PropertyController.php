@@ -12,7 +12,7 @@ class PropertyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(["permission:properties_update,guard:admin"])->only(["update", "edit", "toggle_special"]);
+        $this->middleware(["permission:properties_update,guard:admin"])->only(["update_seen", "update", "edit", "toggle_special"]);
         $this->middleware(["permission:properties_read,guard:admin"])->only("properties");
         $this->middleware(["permission:properties_delete,guard:admin"])->only("delete");
     }
@@ -57,7 +57,7 @@ class PropertyController extends Controller
             'price' => 'required_if:payment,كاش',
             'presenter' => 'required_if:payment,قسط',
             'images' => 'required|array|min:1',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=1300,max_width=1700,min_height=400,max_height=600,ratio=16/5',
         ]);
         if (!empty($request->price)) {
             $request->validate([
@@ -140,12 +140,46 @@ class PropertyController extends Controller
         return view("property.show", compact("property", "slides"));
     }
 
-    public function properties()
+    public function properties(Request $request)
     {
-        $properties = Property::all();
+        $timeRange = $request->timeRange;
+        $ranges = [
+            "7days",
+            "15days",
+            "1month",
+            "3months",
+            "1year"
+        ];
+        if ($timeRange && in_array($timeRange, $ranges)) {
+            $properties = $this->filterPropertiesByTimeRange($timeRange);
+        } else {
+            $properties = Property::all();
+        }
         return view("dashboard.properties.show", ["properties" => $properties]);
     }
+    protected function filterPropertiesByTimeRange($timeRange)
+    {
+        $startDate = Carbon::now();
 
+        switch ($timeRange) {
+            case '7days':
+                $startDate->subDays(7);
+                break;
+            case '15days':
+                $startDate->subDays(15);
+                break;
+            case '1month':
+                $startDate->subMonth();
+                break;
+            case '3months':
+                $startDate->subMonths(3);
+                break;
+            case '1year':
+                $startDate->subYear();
+                break;
+        }
+        return Property::where('created_at', '>=', $startDate)->get();
+    }
     public function delete($id)
     {
         $property = Property::findOrFail($id);
@@ -178,6 +212,16 @@ class PropertyController extends Controller
             abort(404);
         }
         $property->update(["created_at" => Carbon::now()]);
+        return redirect()->back();
+    }
+    public function update_seen(Request $request, $id)
+    {
+        $property = Property::findOrFail($id);
+        if (is_numeric($request->seen)) {
+            $property->update([
+                "seen" => $request->seen
+            ]);
+        }
         return redirect()->back();
     }
 }

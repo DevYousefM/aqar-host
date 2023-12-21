@@ -23,8 +23,10 @@ Route::middleware('admin')->group(function () {
     })->name("dashboard.admin");
 
     Route::get("/companies", [AdminController::class, "companies"])->name("admin.companies");
-    Route::get('/export-companies', [AdminController::class,
-        'exportCompanies'])->name('export.companies');
+    Route::get('/export-companies', [
+        AdminController::class,
+        'exportCompanies'
+    ])->name('export.companies');
 
     Route::get("/make-im/{id}", [AdminController::class, "make_important"])->name("make.important");
     Route::get("/make-un_im/{id}", [AdminController::class, "make_unimportant"])->name("make.un_important");
@@ -55,10 +57,16 @@ Route::middleware('admin')->group(function () {
     Route::get("/edit-property/{id}", [PropertyController::class, "edit"])->name("edit.property");
     Route::post("/update-property/{id}", [PropertyController::class, "update"])->name("update.property");
     Route::get("/toggle-special/{id}", [PropertyController::class, "toggle_special"])->name("toggle.property.special");
+    Route::post("/update-seen/{id}", [PropertyController::class, "update_seen"])->name("update.seen");
+
+    Route::get("/add-prop", [AdminController::class, "add_properties"])->name("add.properties.admin");
+    Route::post("/store-prop", [AdminController::class, "store_property"])->name("store.properties.admin");
 
     Route::get("/users", [AdminController::class, "users"])->name("show.users");
-    Route::get('/export-users', [AdminController::class,
-        'exportUsers'])->name('export.users');
+    Route::get('/export-users', [
+        AdminController::class,
+        'exportUsers'
+    ])->name('export.users');
 
     Route::get("/articles", [ArticleController::class, "index"])->name("all.articles");
     Route::get("/create-article", [ArticleController::class, "create"])->name("create.article");
@@ -98,11 +106,7 @@ Route::middleware('admin')->group(function () {
     Route::post("/reject-single-service/{id}", [SingleServiceRequestController::class, "reject_request"])->name("reject.single.service.requests");
     Route::get("/completed-single-service", [SingleServiceRequestController::class, "completed"])->name("completed.single.service.requests");
 
-    Route::get("/add-prop", [AdminController::class, "add_properties"])->name("add.properties.admin");
-    Route::post("/store-prop", [AdminController::class, "store_property"])->name("store.properties.admin");
-
     Route::get("/search-request", [SearchRequestsController::class, "index"])->name("all.search_request");
-
 });
 Route::get("/login", [AdminController::class, "login"])->name("admin.login");
 

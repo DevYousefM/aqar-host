@@ -12,6 +12,7 @@ class Article extends Model
     protected $fillable = [
         "title",
         "title_seo",
+        "url_name",
         "brief",
         "image",
         "image_alt",

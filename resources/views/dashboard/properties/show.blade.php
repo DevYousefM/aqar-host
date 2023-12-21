@@ -20,6 +20,19 @@
                 ->hasPermission('properties_delete');
         @endphp
         <div class="card-body">
+            <form action="{{ route('admin.properties') }}" class="form-group col-sm-12 col-md-6 d-flex"
+                style="float: left;gap:5px">
+                <select name="timeRange" class="form-control" style="padding-top: 0;height:1.9rem;font-size:.9rem">
+                    <option value="7days" selected={{ request('timeRange') === '7days' }}>7 ايام</option>
+                    <option value="15days" selected={{ request('timeRange') === '15days' }}>15 يوم</option>
+                    <option value="1month" selected={{ request('timeRange') === '1month' }}>شهر</option>
+                    <option value="3months" selected={{ request('timeRange') === '3months' }}>3 اشهر</option>
+                    <option value="1year" selected={{ request('timeRange') === '1year' }}>سنة</option>
+                </select>
+                <button class="btn btn-success btn-sm">فلترة</button>
+                <a class="btn btn-success btn-sm" href="{{ route('admin.properties') }}">الكل</a>
+            </form>
+
             <table class="table table-bordered" id="props">
                 <thead>
                     <tr>
@@ -44,7 +57,8 @@
                     @foreach ($properties as $property)
                         <tr>
                             <td>
-                                <span style="font-size: 15px" class="d-flex align-items-center">
+                                <span data-toggle="modal" data-target="#seen-{{ $count }}" style="font-size: 15px"
+                                    class="d-flex align-items-center">
                                     {{ $property->seen }}
                                     <i class="fas fa-eye mr-1"></i>
                                 </span>
@@ -131,6 +145,42 @@
                                 </div>
                             </div>
                         </div>
+                        @if ($edit)
+                            <div class="modal fade" id="seen-{{ $count }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">العقار: {{ $property->title }}</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card card-primary">
+                                                <form role="form" action="{{ route('update.seen', $property->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('post')
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label for="seen">مشاهدات العقار</label>
+                                                            <input type="number" name="seen"
+                                                                value="{{ $property->seen }}" class="form-control"
+                                                                id="seen" placeholder="عدد المشاهدات">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="modal fade" id="imgs-{{ $count }}">
                             <div class="modal-dialog">
                                 <div class="modal-content">
