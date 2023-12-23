@@ -167,8 +167,7 @@ img {
 }
 
 .advertisement img {
-    width: 100%;
-    height: unset;
+    height: 150px;
 }
 
 .advertisement a {

@@ -111,7 +111,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="description p-4 text-white">
+                <div class="description p-3 text-white">
                     <div class="address">
                         <p>{{ $property->title }}</p>
                         @if ($property->presenter)
@@ -170,6 +170,7 @@
                             <p class="fs-5 fw-bold">{{ str_replace(' ', '', $property->user->phone_sec) }}</p>
                         @endif
                         <p>عدد المشاهدات: {{$property->seen}}</p>
+                        <p>تاريخ نشر الاعلان: {{$property->created_at->format('Y-m-d')}}</p>
                     </div>
                 </div>
             </div>
