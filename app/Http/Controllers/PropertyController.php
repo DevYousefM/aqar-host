@@ -57,7 +57,7 @@ class PropertyController extends Controller
             'price' => 'required_if:payment,كاش',
             'presenter' => 'required_if:payment,قسط',
             'images' => 'required|array|min:1',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=1280,max_width=1600,min_height=500,max_height=720',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         if (!empty($request->price)) {
             $request->validate([
