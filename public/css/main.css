@@ -727,7 +727,7 @@ img {
         justify-content: flex-end;
     }
     .slides-imgs {
-        height: 250px;
+        height: 250px !important;
     }
 }
 @media (max-width: 767.5px) {
