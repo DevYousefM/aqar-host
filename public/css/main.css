@@ -167,7 +167,7 @@ img {
 }
 
 .advertisement img {
-    height: 150px;
+    height: 250px;
 }
 
 .advertisement a {
@@ -727,16 +727,16 @@ img {
         justify-content: flex-end;
     }
     .slides-imgs {
-        height: 20vh;
+        height: 300vh;
     }
 }
 @media (max-width: 767.5px) {
     .slides-imgs {
-        height: 25vh;
+        height: 400vh;
     }
 }
 @media (min-width: 768.5px) {
     .slides-imgs {
-        height: 30vh;
+        height: 500px;
     }
 }
