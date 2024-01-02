@@ -727,12 +727,12 @@ img {
         justify-content: flex-end;
     }
     .slides-imgs {
-        height: 300px;
+        height: 250px;
     }
 }
 @media (max-width: 767.5px) {
     .slides-imgs {
-        height: 400px;
+        height: 350px;
     }
 }
 @media (min-width: 768.5px) {
