@@ -1,5 +1,10 @@
 @extends('layouts.main')
-
+@section('title')
+    <title>عقار مصر | اخبار العقارات في السوق المصري</title>
+@endsection
+@section('description')
+    <meta property="description" content="تعرف على اخبار العقارات في السوق المصري اول بأول مع عقار مصر">
+@endsection
 @section('content')
     <main role="main" class="mt-3">
 
@@ -27,7 +32,7 @@
                                     <p class="card-text">{{ $article->brief }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="{{ route('show.single.article', ['id' => $article->id,'name' => $article->url_name]) }}"
+                                            <a href="{{ route('show.single.article', ['id' => $article->id, 'name' => $article->url_name]) }}"
                                                 class="btn btn-sm btn-secondary">
                                                 قراءة
                                                 المزيد
