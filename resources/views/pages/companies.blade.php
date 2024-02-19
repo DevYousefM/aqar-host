@@ -1,4 +1,12 @@
 @extends('layouts.main')
+@section('title')
+    <title>عقار مصر | الشركات العقارية</title>
+@endsection
+@section('description')
+    <meta property="description"
+        content="تعرف على الشركات العقارية المصري التي تعرض الوحدات المميزة في
+    السوق المصري على عقار مصر">
+@endsection
 @section('content')
     <div class="back-gr">
         <h1 class="pe-5 pt-5 text-white">الشركات</h1>
