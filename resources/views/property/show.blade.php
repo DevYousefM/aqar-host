@@ -109,7 +109,7 @@
                                                    -webkit-box-orient: vertical;">
                                             {{ $e->brief }}
                                         </p>
-                                        <a href="{{ route('property.show', ['id' => $e->id, 'name' => $e->title]) }}"
+                                        <a href="{{ route('property.show', ['id' => $e->id, 'name' => urlencode($e->title)]) }}"
                                             class="btn btn-danger">المزيد</a>
                                     </div>
                                 </div>
