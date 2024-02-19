@@ -118,7 +118,7 @@
                                     <p class="card-text text-trunc trunc-3">{{ $ad->brief }}</p>
                                     <div class=" d-block m-auto">
                                         <a class="d-block m-auto btn main-btn btn-sm" style="font-size: 12px"
-                                            href="{{ route('property.show', ['id' => $ad->id, 'name' => '{{$ad->title}}']) }}">قراءة
+                                            href="{{ route('property.show', ['id' => $ad->id, 'name' => "{{$ad->title}}"]) }}">قراءة
                                             المزيد</a>
                                     </div>
                                 </div>
