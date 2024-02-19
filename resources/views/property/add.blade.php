@@ -2,7 +2,7 @@
 @section('content')
     <!-- Start Sign In -->
     <div class="back-gr">
-        <h1 class="pe-5 pt-5 text-white">انشاء حساب</h1>
+        <h1 class="pe-5 pt-5 text-white">اضافة عقار </h1>
     </div>
 
     <div class="sign-in pt-3 m-auto mt-5 mb-5">

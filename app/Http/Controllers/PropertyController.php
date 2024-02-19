@@ -131,6 +131,58 @@ class PropertyController extends Controller
         ]);
         return redirect()->route("admin.properties")->with("success", "تم تعديل العقار وسيتم عرضه في صفحة الأعلانات");
     }
+    public function updateByUser(Request $request, $id)
+    {
+        $property = Property::findOrFail($id);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'brief' => 'required|string',
+            'type' => 'required|string|max:255',
+            'purpose' => 'required|string|max:255|in:بيع,شراء,ايجار',
+            'gov' => 'required|numeric|exists:governments,id',
+            'area' => 'required|string|max:255',
+            'level' => 'nullable',
+            'rooms' => 'nullable|integer|min:1',
+            'meters' => 'required|numeric|min:1',
+            'payment' => 'nullable|in:كاش,قسط',
+            'price' => 'required_if:payment,كاش',
+            'presenter' => 'required_if:payment,قسط',
+            'images' => 'array|min:1',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $property->update([
+            'title' => $request->title,
+            'brief' => $request->brief,
+            'type' => $request->type,
+            'purpose' => $request->purpose,
+            'gov' => $request->gov,
+            'area' => $request->area,
+            'level' => $request->level,
+            'rooms' => $request->rooms,
+            'meters' => $request->meters,
+            'payment' => $request->payment,
+            'presenter' => $request->presenter,
+            'price' => $request->price,
+        ]);
+        if ($request->hasFile('images')) {
+            foreach ($property->images as $img) {
+                Storage::disk("public")->delete("property_images/" . $img->path);
+            }
+            foreach ($request->file('images') as $image) {
+                $filename = uniqid() . '.' . $image->getClientOriginalExtension();
+
+                Storage::disk('public')->putFileAs('property_images', $image, $filename);
+
+                $propertyImage = new PropertyImage([
+                    'property_id' => $property->id,
+                    'path' => $filename,
+                ]);
+
+                $propertyImage->save();
+            }
+        }
+        return redirect()->route("dashboard")->with("success", "تم تعديل العقار وسيتم عرضه في صفحة الأعلانات");
+    }
 
     public function show($id)
     {
@@ -189,11 +241,25 @@ class PropertyController extends Controller
         $property->delete();
         return redirect()->back()->with("success", "تم حذف العقار");
     }
+    public function deleteByUser($id)
+    {
+        $property = Property::findOrFail($id);
+        foreach ($property->images as $img) {
+            Storage::disk("public")->delete("property_images/" . $img->path);
+        }
+        $property->delete();
+        return redirect()->back()->with("success", "تم حذف العقار");
+    }
 
     public function edit($id)
     {
         $property = Property::findOrFail($id);
         return view("dashboard.properties.edit", compact("property"));
+    }
+    public function editByUser($id)
+    {
+        $property = Property::findOrFail($id);
+        return view("property.edit", compact("property"));
     }
 
     public function toggle_special($id)

@@ -89,6 +89,8 @@ Route::middleware('admin')->group(function () {
     Route::post("/update-user-plan/{id}", [UserPlansController::class, "update"])->name("update.user.plans");
 
     Route::get("/company-plan", [CompanyPlansController::class, "index"])->name("show.company.plans");
+    Route::get("/add-company-plan", [CompanyPlansController::class, "create"])->name("create.company.plans");
+    Route::post("/store-company-plan", [CompanyPlansController::class, "store"])->name("store.company.plans");
     Route::get("/edit-company-plan/{id}", [CompanyPlansController::class, "edit"])->name("edit.company.plans");
     Route::post("/update-company-plan/{id}", [CompanyPlansController::class, "update"])->name("update.company.plans");
 

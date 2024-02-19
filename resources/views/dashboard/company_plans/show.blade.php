@@ -15,7 +15,11 @@
         <?php
         $edit = auth("admin")->user()->hasPermission("company_plans_update");
         ?>
+        
         <div class="card-body">
+            <a href="{{route("create.company.plans")}}" class="btn  btn-primary mb-2">أضافة باقة <i
+                    class="fa fa-plus"></i>
+            </a>
             <table class="table" id="plansTable">
                 <thead>
                 <tr>
@@ -28,7 +32,10 @@
                     <th>عدد ايام الظهور(الهيدر)</th>
                     <th>اعلانات اليوتيوب</th>
                     <th>اعلانات جوجل</th>
-                    <th>السعر</th>
+                    <th>السعر للشهر</th>
+                    <th>3 شهور</th>
+                    <th>6 شهور</th>
+                    <th>سنة</th>
                     @if($edit)
                         <th>تعديل</th>
                     @endif
@@ -59,6 +66,15 @@
                         </td>
                         <td>
                             {{number_format($plan->price). " جنية "}}
+                        </td>
+                        <td>
+                            {{number_format($plan->three_month). " جنية "}}
+                        </td>
+                        <td>
+                            {{number_format($plan->six_month). " جنية "}}
+                        </td>
+                        <td>
+                            {{number_format($plan->one_year). " جنية "}}
                         </td>
                         @if($edit)
                             <td><a href="{{route("edit.company.plans",$plan->id)}}" class="btn  btn-success">

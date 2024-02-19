@@ -28,6 +28,16 @@
                                         {{ __('عرض العقار') }}
                                     </a>
                                 </x-primary-button>
+                                <x-primary-button style="background-color: red">
+                                    <a href="{{route("property.deleteByUser",$property->id)}}">
+                                        {{ __('حذف العقار') }}
+                                    </a>
+                                </x-primary-button>
+                                <x-primary-button style="background-color: red">
+                                    <a href="{{route("property.editByUser",$property->id)}}">
+                                        {{ __('تعديل العقار') }}
+                                    </a>
+                                </x-primary-button>
                                 @if(auth()->user()->account_type === "personal")
                                     <div onclick="showPlans({{$count}})">
                                         <x-primary-button style="background-color: red">

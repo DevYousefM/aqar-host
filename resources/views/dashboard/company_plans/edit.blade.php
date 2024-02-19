@@ -107,7 +107,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFName">السعر</label>
+                            <label for="exampleInputFName">السعر للشهر</label>
                             <input type="number" class="form-control"
                                    id="exampleInputFName" placeholder="السعر"
                                    name="price"
@@ -117,12 +117,32 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFName">السعر قبل الخصم</label>
+                            <label for="exampleInputFName">3 شهور</label>
                             <input type="number" class="form-control"
-                                   id="exampleInputFName" placeholder="السعر قبل الخصم"
-                                   name="last_price"
-                                   value="{{ $plan->last_price }}">
-                            @error('last_price')
+                                   id="exampleInputFName" placeholder="3 شهور"
+                                   name="three_month"
+                                   value="{{ $plan->three_month }}">
+                            @error('three_month')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFName">6 شهور</label>
+                            <input type="number" class="form-control"
+                                   id="exampleInputFName" placeholder="6 شهور"
+                                   name="six_month"
+                                   value="{{ $plan->six_month }}">
+                            @error('six_month')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFName">سنة</label>
+                            <input type="number" class="form-control"
+                                   id="exampleInputFName" placeholder="سنة"
+                                   name="one_year"
+                                   value="{{ $plan->one_year }}">
+                            @error('one_year')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

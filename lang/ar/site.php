@@ -29,6 +29,7 @@ return [
     "platinum" => "الباقة البلاتينية",
     "silver" => "الباقة الفضية",
     "gold" => "الباقة الذهبية",
+    "main" => "الباقة الأساسية",
     "account_company_service" => "أشتراك حساب شركات",
     "add_properties_service" => "أضافة 10 عقارات",
     "header_service" => "اعلان الهيدر",

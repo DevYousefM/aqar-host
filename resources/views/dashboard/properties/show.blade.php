@@ -70,7 +70,7 @@
                             </td>
                             <td>
                                 <a
-                                    href="{{ route('property.show', ['id' => $property->id, 'name' => $property->title]) }}">
+                                    href="{{ route('property.show', ['id' => $property->id, 'name' => '{{$property->title}}']) }}">
                                     <button type="button" class="btn btn-sm btn-info">
                                         عرض العقار
                                     </button>

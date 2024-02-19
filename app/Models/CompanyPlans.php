@@ -19,7 +19,11 @@ class CompanyPlans extends Model
         "youtube_ads_num",
         "google_ads_num",
         "price",
-        "last_price"
+        "three_month",
+        "six_month",
+        "one_year",
+        "last_price",
+        
     ];
 
 }

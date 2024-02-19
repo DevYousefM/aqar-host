@@ -3,12 +3,6 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 @endsection
-@section('title')
-    <title>عقار مصر | {{ $property->title }}</title>
-@endsection
-@section('description')
-    <meta property="description" content="{{ $property->title }}">
-@endsection
 @section('content')
     <div class="back-gr">
         <h4 class="pe-5 pt-5 text-white">{{ $property->title }}</h4>
@@ -175,8 +169,8 @@
                         @if ($property->user->phone_sec)
                             <p class="fs-5 fw-bold">{{ str_replace(' ', '', $property->user->phone_sec) }}</p>
                         @endif
-                        <p>عدد المشاهدات: {{ $property->seen }}</p>
-                        <p>تاريخ نشر الاعلان: {{ $property->created_at->format('Y-m-d') }}</p>
+                        <p>عدد المشاهدات: {{$property->seen}}</p>
+                        <p>تاريخ نشر الاعلان: {{$property->created_at->format('Y-m-d')}}</p>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,4 @@
 @extends('layouts.main')
-@section('title')
-    <title>عقار مصر | بيع و اشتري من غير سمسار</title>
-@endsection
-@section('description')
-    <meta property="description"
-        content="خدمات عقار مصر هي خدمه مجانية تساعدك على بيع وشراء العقارات بسهولة
-        و توصلك بالبائع مباشرةً بدون اي وسيط وتزودك بالمعلومات الاساسية لإتخاذ واحد من أهم
-        القرارات المالية في حياتك">
-@endsection
 @section('content')
     <!-- Start Slider -->
     <div class="slider position-relative">
@@ -17,7 +8,8 @@
                     <?php $active = true; ?>
                     @foreach ($slides as $slide)
                         <div class="carousel-item {{ $active ? 'active' : '' }}">
-                            <img src="{{ asset($slide->path) }}" class="d-block w-100 slides-imgs" alt="{{ $slide->name }}">
+                            <img src="{{ asset($slide->path) }}" class="d-block w-100 slides-imgs"
+                                alt="{{ $slide->name }}">
                         </div>
                         <?php $active = false; ?>
                     @endforeach
@@ -126,7 +118,7 @@
                                     <p class="card-text text-trunc trunc-3">{{ $ad->brief }}</p>
                                     <div class=" d-block m-auto">
                                         <a class="d-block m-auto btn main-btn btn-sm" style="font-size: 12px"
-                                            href="{{ route('property.show', ['id' => $ad->id, 'name' => $ad->title]) }}">قراءة
+                                            href="{{ route('property.show', ['id' => $ad->id, 'name' => '{{$ad->title}}']) }}">قراءة
                                             المزيد</a>
                                     </div>
                                 </div>

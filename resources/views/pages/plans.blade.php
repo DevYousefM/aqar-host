@@ -18,7 +18,7 @@
                         <div class="card h-100 shadow-lg">
                             <div class="card-body" style="flex: none">
                                 <div class="text-center ">
-                                    <span class="h2">{{$plan->price}} جنية </span>
+                                    <span class="h2">{{$plan->one_year}} جنية </span>
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush pe-1">

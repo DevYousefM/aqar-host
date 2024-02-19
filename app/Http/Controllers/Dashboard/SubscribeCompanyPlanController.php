@@ -142,6 +142,7 @@ class SubscribeCompanyPlanController extends Controller
     public function show_plans()
     {
         $company_plans_sub = auth()->user()->company_plans_sub;
-        return view("pages.user_plans", ["subs" => $company_plans_sub]);
+        $plans = CompanyPlans::all();
+        return view("pages.user_plans", ["subs" => $company_plans_sub,"company_plans"=>$plans]);
     }
 }
