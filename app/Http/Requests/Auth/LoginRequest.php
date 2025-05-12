@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'login_identifier' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -41,11 +42,27 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $login_identifier = $this->input('login_identifier');
+
+        if (filter_var($login_identifier, FILTER_VALIDATE_EMAIL)) {
+            $this->merge(['email' => $login_identifier]);
+        } else {
+            $user = User::where('phone', $login_identifier)->OrWhere('phone_sec', $login_identifier)->first();
+            if ($user) {
+                $this->merge(['email' => $user->email]);
+            } else {
+                throw ValidationException::withMessages([
+                    'login_identifier' => trans('auth.failed'),
+                ]);
+            }
+        }
+
+
+        if (!Auth::guard($guard)->attempt(['email' => $this->input('email'), 'password' => $this->input('password')], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'login_identifier' => trans('auth.failed'),
             ]);
         }
 
