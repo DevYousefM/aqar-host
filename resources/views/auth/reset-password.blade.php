@@ -13,10 +13,9 @@
                     action="{{ route('password.store') }}">
                     @method('POST')
                     @csrf
+
                     <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-
-                    <input value="{{ request('email') }}" class="w-75 p-1 border" type="hidden" name="email">
+                    <input value="{{ request('email') }}" type="hidden" name="email">
 
                     <label class="mt-2" for="password">ادخل كلمة السر الجديدة</label>
                     <input value="{{ old('password') }}" class="w-75 p-1 border text-center" type="password"
@@ -32,7 +31,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
-                    @error('result')
+                    @error('email')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
