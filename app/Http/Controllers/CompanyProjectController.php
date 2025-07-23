@@ -35,6 +35,11 @@ class CompanyProjectController extends Controller
             'images.*.mimes' => 'الصور يجب أن تكون من نوع jpeg، png، jpg، أو gif',
             'images.*.max' => 'حجم كل صورة يجب أن لا يتجاوز 2 ميجابايت',
         ]);
+
+        if (auth()->user()->company_projects->count() >= 5) {
+            return redirect()->back()->with("error", "يجب الاشتراك في احدي الباقات لتتمكن من اضافة اكثر من 5 مشاريع");
+        }
+
         $project = CompanyProject::create([
             "title" => $request->title,
             "user_id" => auth()->user()->id
