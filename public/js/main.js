@@ -127,6 +127,7 @@ if (govEle) {
         areaEle.innerHTML = "";
         if (areas.length > 0) {
             const filteredItems = areas.filter(item => item.government_id == e.target.value);
+            areaEle.innerHTML = `<option selected disabled value="">كل المناطق</option>`;
             filteredItems.forEach(item => {
                 areaEle.innerHTML += `
             <option value='${item.area}' class="dropdown-item">${item.area}</option>`

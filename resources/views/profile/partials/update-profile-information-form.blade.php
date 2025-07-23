@@ -9,7 +9,7 @@
 
     <form method="POST" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
-        @method("PATCH")
+        @method('PATCH')
         <div class="mt-6 space-y-6">
 
             <div>
@@ -17,6 +17,16 @@
                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
                     required autofocus autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            </div>
+
+
+
+            <div>
+                <x-input-label for="phone" :value="__('رقم الهاتف')" />
+                <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)"
+                    required autocomplete="username" />
+                <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+
             </div>
 
             <div>

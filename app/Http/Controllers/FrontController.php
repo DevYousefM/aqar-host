@@ -16,7 +16,7 @@ class FrontController extends Controller
 {
     public function show_companies()
     {
-        $im_companies = User::where("account_type", "company")->where("is_important", true)->paginate(8);
+        $im_companies = User::where("account_type", "company")->where("is_important", true)->whereHas("properties")->paginate(8);
         $left_sliders = Slider::where("place", "left")->get();
         $right_sliders = Slider::where("place", "right")->get();
         $banners = CompanyBanner::all();

@@ -91,7 +91,6 @@
                 </select>
             </div>
             <div class="search d-flex gap-2">
-                <input class="border rounded pe-2" type="search" name="search" id="">
                 <button type="submit" class="btn p-2 rounded bg-danger pill text-white d-flex align-items-center"
                     href=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>

@@ -1,4 +1,4 @@
-<div class="header sticky-top bg-white">
+<div class="header  bg-white">
     <div class="border-bottom">
         <div class="container">
             <div class="content d-flex justify-content-between pt-3 pb-2">
