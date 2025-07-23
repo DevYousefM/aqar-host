@@ -1,0 +1,4 @@
+[22-Nov-2023 09:57:59 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/aqar/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/aqar/public_html/config/database.php on line 18

