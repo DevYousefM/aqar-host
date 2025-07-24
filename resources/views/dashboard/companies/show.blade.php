@@ -15,7 +15,9 @@
         @include("dashboard.components.includes.error")
         @include("dashboard.components.includes.success")
         @include("dashboard.components.includes.message")
-
+        @php
+            $edit = auth("admin")->user()->hasPermission("companies_update");
+        @endphp
         <div class="card-body">
             <table class="table table-bordered" id="companies">
                 <thead>
