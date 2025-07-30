@@ -93,7 +93,7 @@
                                     <div style="height: 135px;width:100%" class="img-container">
                                         <img style="height: 135px;width:100% !important"
                                             src="
-                                    {{ asset('property_images/' . $e->images[0]->path) }}"
+                                            {{ count($e->images) > 0 ? asset('property_images/' . $e->images[0]->path) : '#' }}"
                                             class="card-img-top" alt="...">
                                         <span class="logo-tag"></span>
                                     </div>

@@ -41,6 +41,8 @@
                         <option value='روف'>روف</option>
                         <option value='فيلا'>فيلا</option>
                         <option value='سكن الطلبة'>سكن الطلبة</option>
+                        <option value="شقق مصيفية">شقق مصيفية</option>
+                        <option value="شاليهات">شاليهات</option>
                     </select>
                     @error('type')
                         <div class="text-danger">{{ $message }}</div>

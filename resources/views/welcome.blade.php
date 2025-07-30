@@ -74,6 +74,8 @@
                     <option class="dropdown-item" value="روف">روف</option>
                     <option class="dropdown-item" value="مبانى">مبانى</option>
                     <option class="dropdown-item" value="سكن الطلبة">سكن الطلبة</option>
+                    <option class="dropdown-item" value="شقق مصيفية">شقق مصيفية</option>
+                    <option class="dropdown-item" value="شاليهات">شاليهات</option>
                 </select>
             </div>
             <div class="dropdown">
@@ -107,7 +109,8 @@
                 <div class="row mx-1 " style="width: 100%">
 
                     @foreach ($ads as $ad)
-                        <div class="col-md-6 col-lg-4 mb-4 position-relative">
+                        <div class="col-md-6 col-lg-4 mb-4 position-relative" style="cursor: pointer"
+                            onclick="location.href='{{ route('property.show', ['id' => $ad->id, 'name' => urlencode($ad->title)]) }}'">
                             @if ($ad->is_special)
                                 <div class="specialTag">
                                     <strong style="color: red">اعلان مميز</strong>
@@ -116,13 +119,16 @@
                             @endif
                             <div class="card">
                                 <div class="img-container">
-                                    <img class="card-img-top" src="{{ asset('property_images/' . $ad->images[0]->path) }}"
+                                    <img class="card-img-top"
+                                        src="{{ $ad->images->count() > 0 ? asset('property_images/' . $ad->images[0]->path) : asset('property_images/default.png') }}"
                                         alt="">
                                     <span class="logo-tag"></span>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title text-trunc trunc-2">{{ $ad->title }}...</h4>
                                     <p class="card-text text-trunc trunc-3">{{ $ad->brief }}</p>
+                                    <p class="card-text"> {{ $ad->created_at->diffForHumans() }} |
+                                        {{ $ad->created_at->format('Y-m-d') }}</p>
                                     <div class=" d-block m-auto">
                                         <a class="d-block m-auto btn main-btn btn-sm" style="font-size: 12px"
                                             href="{{ route('property.show', ['id' => $ad->id, 'name' => urlencode($ad->title)]) }}">قراءة

@@ -16,41 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function (Request $request) {
-    $query = Property::query();
-
-    if ($request->has('purpose') && !empty($request->purpose)) {
-        $query->where('purpose', $request->input('purpose'));
-    }
-
-    if ($request->has('type') && !empty($request->type)) {
-        $query->where('type', $request->input('type'));
-    }
-
-    if ($request->has('gov') && !empty($request->gov)) {
-        $query->where('gov', $request->input('gov'));
-    }
-
-    if ($request->has('area') && !empty($request->area)) {
-        $query->where('area', $request->input('area'));
-    }
-
-    if ($request->has('search') && !empty($request->search)) {
-        $searchTerm = $request->input('search');
-        $query->where(function ($innerQuery) use ($searchTerm) {
-            $innerQuery->where('title', 'LIKE', "%$searchTerm%")
-                ->orWhere('brief', 'LIKE', "%$searchTerm%");
-        });
-    }
-
-    $ads = $query->orderBy('is_special', 'desc')
-        ->orderBy('created_at', 'desc')
-        ->paginate(6);
-    $slides = Slide::all();
-    $left_sliders = Slider::where("place", "left")->get();
-    $right_sliders = Slider::where("place", "right")->get();
-    return view('welcome', ["ads" => $ads, "slides" => $slides, "left_sliders" => $left_sliders, "right_sliders" => $right_sliders]);
-})->name("home");
+Route::get('/', [FrontController::class, 'home'])->name("home");
 Route::get('/companies', [FrontController::class, 'show_companies'])->name('companies.show');
 Route::get('/im-property', [FrontController::class, 'im_property'])->name('im.property');
 Route::get('/find-your-property', [SearchRequestsController::class, 'search_request_form'])->name('search_request_form.show');

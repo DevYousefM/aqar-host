@@ -18,7 +18,6 @@ class PasswordResetLinkController extends Controller
     }
 
     public function store(Request $request)
-    // public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'login_identifier' => ['required', 'string'],

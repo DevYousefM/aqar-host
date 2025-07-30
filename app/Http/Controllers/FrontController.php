@@ -7,6 +7,7 @@ use App\Models\CompanyPlans;
 use App\Models\Contact;
 use App\Models\Property;
 use App\Models\SingleService;
+use App\Models\Slide;
 use App\Models\Slider;
 use App\Models\User;
 use App\Models\UserPlans;
@@ -14,6 +15,42 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+    public function home(Request $request)
+    {
+        $query = Property::query();
+
+        if ($request->has('purpose') && !empty($request->purpose)) {
+            $query->where('purpose', $request->input('purpose'));
+        }
+
+        if ($request->has('type') && !empty($request->type)) {
+            $query->where('type', $request->input('type'));
+        }
+
+        if ($request->has('gov') && !empty($request->gov)) {
+            $query->where('gov', $request->input('gov'));
+        }
+
+        if ($request->has('area') && !empty($request->area)) {
+            $query->where('area', $request->input('area'));
+        }
+
+        if ($request->has('search') && !empty($request->search)) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($innerQuery) use ($searchTerm) {
+                $innerQuery->where('title', 'LIKE', "%$searchTerm%")
+                    ->orWhere('brief', 'LIKE', "%$searchTerm%");
+            });
+        }
+
+        $ads = $query->orderBy('is_special', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+        $slides = Slide::all();
+        $left_sliders = Slider::where("place", "left")->get();
+        $right_sliders = Slider::where("place", "right")->get();
+        return view('welcome', ["ads" => $ads, "slides" => $slides, "left_sliders" => $left_sliders, "right_sliders" => $right_sliders]);
+    }
     public function show_companies()
     {
         $im_companies = User::where("account_type", "company")->where("is_important", true)->whereHas("properties")->paginate(8);
