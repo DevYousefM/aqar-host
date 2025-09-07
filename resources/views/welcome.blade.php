@@ -148,7 +148,7 @@
         </div>
     </div>
     <!-- Start Nearby Properties -->
-    <div class="advertisement">
+    <div class="advertisement" id="nearby">
         <div class="col-12">
             <h2 class="text-center mb-5">عقارات قريبة منك</h2>
             <div id="map" style="height: 500px; width: 100%;"></div>
