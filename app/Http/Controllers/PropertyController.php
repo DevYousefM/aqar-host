@@ -58,6 +58,11 @@ class PropertyController extends Controller
             'presenter' => 'required_if:payment,قسط',
             'images' => 'required|array|min:1',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'location_url' => [
+                'required',
+                'url',
+                'regex:/^(https?:\/\/)?(www\.)?(google\.com\/maps|maps\.google\.com|goo\.gl\/maps|maps\.app\.goo\.gl)/'
+            ],
         ]);
         if (!empty($request->price)) {
             $request->validate([
@@ -84,6 +89,7 @@ class PropertyController extends Controller
             'payment' => $request->payment,
             'presenter' => $request->presenter,
             'price' => $request->price,
+            'location_url' => $request->location_url,
         ]);
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -149,6 +155,11 @@ class PropertyController extends Controller
             'presenter' => 'required_if:payment,قسط',
             'images' => 'array|min:1',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'location_url' => [
+                'required',
+                'url',
+                'regex:/^(https?:\/\/)?(www\.)?(google\.com\/maps|maps\.google\.com|goo\.gl\/maps|maps\.app\.goo\.gl)/'
+            ],
         ]);
         $property->update([
             'title' => $request->title,
@@ -163,6 +174,7 @@ class PropertyController extends Controller
             'payment' => $request->payment,
             'presenter' => $request->presenter,
             'price' => $request->price,
+            'location_url' => $request->location_url,
         ]);
         if ($request->hasFile('images')) {
             foreach ($property->images as $img) {

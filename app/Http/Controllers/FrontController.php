@@ -12,6 +12,7 @@ use App\Models\Slider;
 use App\Models\User;
 use App\Models\UserPlans;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -51,6 +52,41 @@ class FrontController extends Controller
         $right_sliders = Slider::where("place", "right")->get();
         return view('welcome', ["ads" => $ads, "slides" => $slides, "left_sliders" => $left_sliders, "right_sliders" => $right_sliders]);
     }
+
+    public function getNearbyProperties(Request $request)
+    {
+
+        if (!$request->has('lat') || !$request->has('long')) {
+            return response()->json(['error' => 'Latitude and longitude are required.'], 400);
+        }
+
+        $latitude = $request->input('lat');
+        $longitude = $request->input('long');
+        $radius = $request->input('radius', 10);
+
+        $properties = Property::select(
+            '*',
+            DB::raw("(
+                6371 * acos(
+                    cos(radians($latitude)) *
+                    cos(radians(latitude)) *
+                    cos(radians(longitude) - radians($longitude)) +
+                    sin(radians($latitude)) *
+                    sin(radians(latitude))
+                )
+            ) AS distance")
+        )
+            ->with('images')
+
+            ->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->having('distance', '<=', $radius)
+            ->orderBy('distance')
+            ->get();
+
+        return response()->json($properties);
+    }
+
     public function show_companies()
     {
         $im_companies = User::where("account_type", "company")->where("is_important", true)->whereHas("properties")->paginate(8);

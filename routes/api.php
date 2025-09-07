@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +25,4 @@ Route::get('/govs', function (Request $request) {
 Route::get('/areas', function (Request $request) {
     return response()->json(\App\Models\Area::all());
 });
+Route::get('/nearby-properties', [FrontController::class, 'getNearbyProperties']);

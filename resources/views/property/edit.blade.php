@@ -12,8 +12,8 @@
                 @include('components.includes.success')
                 @include('components.includes.error')
 
-                <form class="d-flex flex-column align-items-center gap-2" method="POST" action="{{ route('property.update',$property->id) }}"
-                    enctype="multipart/form-data">
+                <form class="d-flex flex-column align-items-center gap-2" method="POST"
+                    action="{{ route('property.update', $property->id) }}" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
                     <label class="mt-2" for="title">العنوان</label>
@@ -35,12 +35,14 @@
                         <option value='محلات' {{ $property->type == 'محلات' ? 'selected' : '' }}>محلات</option>
                         <option value='اراضى' {{ $property->type == 'اراضى' ? 'selected' : '' }}>اراضى</option>
                         <option value='ارضى' {{ $property->type == 'ارضى' ? 'selected' : '' }}>ارضى</option>
-                        <option value='ارضى بجنينة' {{ $property->type == 'ارضى بجنينة' ? 'selected' : '' }}>ارضى بجنينة</option>
+                        <option value='ارضى بجنينة' {{ $property->type == 'ارضى بجنينة' ? 'selected' : '' }}>ارضى بجنينة
+                        </option>
                         <option value='ادارى' {{ $property->type == 'ادارى' ? 'selected' : '' }}>ادارى</option>
                         <option value='مبانى' {{ $property->type == 'مبانى' ? 'selected' : '' }}>مبانى</option>
                         <option value='روف' {{ $property->type == 'روف' ? 'selected' : '' }}>روف</option>
                         <option value='فيلا' {{ $property->type == 'فيلا' ? 'selected' : '' }}>فيلا</option>
-                        <option value='سكن الطلبة' {{ $property->type == 'سكن الطلبة' ? 'selected' : '' }}>سكن الطلبة</option>
+                        <option value='سكن الطلبة' {{ $property->type == 'سكن الطلبة' ? 'selected' : '' }}>سكن الطلبة
+                        </option>
                     </select>
 
                     @error('type')
@@ -73,6 +75,12 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
+                    <label class="mt-2" for="location_url">رابط موقع العقار</label>
+                    <input value="{{ old('location_url', $property->location_url) }}" class="w-75 p-1 border" type="text" name="location_url">
+                    @error('location_url')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+
                     <label class="mt-2" id="level_title" for="level">الدور</label>
                     <select name="level" id="level" class="w-75 p-1 border">
                     </select>
@@ -82,7 +90,7 @@
 
 
                     <label class="mt-2" id="rooms_title" for="rooms">عدد الغرف</label>
-                    <input value="{{  $property->rooms }}" id="rooms" class="w-75 p-1 border" type="number"
+                    <input value="{{ $property->rooms }}" id="rooms" class="w-75 p-1 border" type="number"
                         name="rooms">
                     @error('rooms')
                         <div class="text-danger">{{ $message }}</div>
@@ -112,7 +120,8 @@
 
                     <div id="presenter" class="d-none flex-column align-items-center gap-2 w-100">
                         <label class="mt-2" for="presenter">قيمة المقدم</label>
-                        <input value="{{ $property->presenter }}" class="w-75 p-1 border" type="number" name="presenter">
+                        <input value="{{ $property->presenter }}" class="w-75 p-1 border" type="number"
+                            name="presenter">
                         @error('presenter')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

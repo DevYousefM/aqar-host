@@ -86,6 +86,10 @@
                             {{--                            </a> --}}
                         </div>
                     </div>
+                    <div id="map"
+                        style="height: 500px; border-radius:10px; overflow:hidden;margin-top:20px;margin-bottom:20px;">
+                    </div>
+
                     <div class="owl-carousel owl-theme mt-4" style="width: 90%">
                         @foreach ($slides as $e)
                             <div class="item">
@@ -215,5 +219,34 @@
                 }
             }
         })
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const propertyLat = {{ $property->latitude ?? 'null' }};
+            const propertyLong = {{ $property->longitude  ?? 'null' }};
+
+            if (propertyLat && propertyLong) {
+                const map = L.map('map').setView([propertyLat, propertyLong], 14);
+                const homeIcon = L.icon({
+                    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+                    iconSize: [25, 41],
+                    popupAnchor: [0, -20]
+                });
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+                }).addTo(map);
+
+                L.marker([propertyLat, propertyLong], {
+                        icon: homeIcon
+                    })
+                    .addTo(map)
+                    .bindPopup(`<p style="text-align:center"><b>{{ $property->title }}</b><br>📍 موقع العقار</p>`)
+                    .openPopup();
+            } else {
+                document.getElementById('map').style.display = 'none';
+            }
+        });
     </script>
 @endsection

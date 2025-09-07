@@ -147,4 +147,17 @@
             </nav>
         </div>
     </div>
+    <!-- Start Nearby Properties -->
+    <div class="advertisement">
+        <div class="col-12">
+            <h2 class="text-center mb-5">عقارات قريبة منك</h2>
+            <div id="map" style="height: 500px; width: 100%;"></div>
+
+        </div>
+    </div>
+@endsection
+@section('script')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="{{ asset('js/nearby-properties.js') }}"></script>
 @endsection

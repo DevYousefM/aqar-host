@@ -73,6 +73,13 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
+
+                    <label class="mt-2" for="location_url">رابط موقع العقار</label>
+                    <input value="{{ old('location_url') }}" class="w-75 p-1 border" type="text" name="location_url">
+                    @error('location_url')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+
                     <label class="mt-2" id="level_title" for="level">الدور</label>
                     <select name="level" id="level" class="w-75 p-1 border">
                     </select>
