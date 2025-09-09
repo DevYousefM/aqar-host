@@ -29,6 +29,7 @@ Route::get('/news/{id}/{name?}', [ArticleController::class, 'show_article'])->na
 Route::get('/plans', [FrontController::class, 'plans'])->name('front.plans');
 Route::get('/company-plans', [FrontController::class, 'company_plans'])->name('company.plans');
 Route::get('/services', [FrontController::class, 'single_services'])->name('single.services');
+Route::get('/properties-map', [FrontController::class, 'properties_map'])->name('properties.map');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

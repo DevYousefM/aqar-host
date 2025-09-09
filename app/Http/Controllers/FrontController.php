@@ -165,4 +165,8 @@ class FrontController extends Controller
         $right_sliders = Slider::where("place", "right")->get();
         return view("pages.services", compact("services", "left_sliders", "right_sliders"));
     }
+    public function properties_map()
+    {
+        return view('property.properties_map');
+    }
 }

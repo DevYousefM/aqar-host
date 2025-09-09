@@ -38,7 +38,7 @@
                         <a class="nav-link links" aria-current="page" href="{{ route('home') }}">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link links" href="{{ route('home') }}#nearby">خريطة العقارات</a>
+                        <a class="nav-link links" href="{{ route('properties.map') }}">خريطة العقارات</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link links" href="{{ route('show.articles') }}">اخبار العقارات</a>

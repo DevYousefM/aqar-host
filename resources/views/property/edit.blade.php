@@ -76,10 +76,37 @@
                     @enderror
 
                     <label class="mt-2" for="location_url">رابط موقع العقار</label>
-                    <input value="{{ old('location_url', $property->location_url) }}" class="w-75 p-1 border" type="text" name="location_url">
+                    <div class="d-flex align-items-center w-75">
+                        <input id="location_url" value="{{ old('location_url', $property->location_url) }}"
+                            class="p-1 border flex-grow-1" type="text" name="location_url" readonly>
+                        <button type="button" class="btn btn-outline-success ms-2" id="openMapBtn">
+                            📍 اختر من الخريطة
+                        </button>
+                    </div>
+
                     @error('location_url')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
+
+                    <!-- Map Modal -->
+                    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="إغلاق"></button>
+                                    <h5 class="modal-title text-right">اختر موقع العقار</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="map" style="height: 400px;"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">حفظ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <label class="mt-2" id="level_title" for="level">الدور</label>
                     <select name="level" id="level" class="w-75 p-1 border">
@@ -167,4 +194,48 @@
         </div>
     </div>
     <!-- End Sign In -->
+@endsection
+@section('script')
+    <!-- Bootstrap Modal (لو مش محمل في layout) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map, marker;
+
+            document.getElementById("openMapBtn").addEventListener("click", function() {
+                var modal = new bootstrap.Modal(document.getElementById('mapModal'));
+                modal.show();
+
+                if (!map) {
+                    map = L.map('map').setView([30.0444, 31.2357], 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+
+                    map.on('click', function(e) {
+                        var lat = e.latlng.lat;
+                        var lng = e.latlng.lng;
+
+                        if (marker) {
+                            map.removeLayer(marker);
+                        }
+
+                        marker = L.marker([lat, lng]).addTo(map);
+
+                        document.getElementById('location_url').value =
+                            `https://www.google.com/maps?q=${lat},${lng}`;
+                    });
+                }
+
+                setTimeout(() => {
+                    map.invalidateSize();
+                }, 200);
+            });
+        });
+    </script>
 @endsection
