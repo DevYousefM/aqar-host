@@ -184,34 +184,67 @@ showPresenter()
 let fileInput = document.getElementById("propertyImages");
 let filenamesContainer = document.getElementById("imageFilenames");
 
+let allFiles = [];
+
 fileInput?.addEventListener("change", function (event) {
+    let selectedFiles = Array.from(event.target.files);
+
+    allFiles = allFiles.concat(selectedFiles);
+
+    renderFiles();
+
+    const dataTransfer = new DataTransfer();
+    allFiles.forEach(file => dataTransfer.items.add(file));
+    fileInput.files = dataTransfer.files;
+});
+
+function renderFiles() {
     filenamesContainer.innerHTML = "";
-
-    let selectedFiles = event.target.files;
-
-    for (let i = 0; i < selectedFiles.length; i++) {
+    allFiles.forEach((file, index) => {
         let card = document.createElement("div");
-        card.classList.add("d-flex");
-        card.classList.add("flex-column");
-        card.classList.add("gap-2");
-        card.classList.add("col-5");
+        card.classList.add("d-flex", "flex-column", "gap-2", "col-5", "position-relative");
 
-        let file = selectedFiles[i];
         let imageElement = document.createElement("img");
         imageElement.src = URL.createObjectURL(file);
-        imageElement.style = "width:100%;height:unset !important";
-        let filename = selectedFiles[i].name;
+        imageElement.style = "width:100%;height:auto !important";
+
         let filenameElement = document.createElement("div");
-        filenameElement.textContent = filename;
+        filenameElement.textContent = file.name;
+
+        let removeBtn = document.createElement("span");
+        removeBtn.innerHTML = "<i class='fas fa-trash-alt'></i>";
+        removeBtn.style = `
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: white;
+            background: red;
+            border-radius: 50%;
+            padding: 5px 9px 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transform: translate(50%, -50%);
+            border: 1px rgba(0, 0, 0, 0.2) solid ; 
+        `;
+        removeBtn.addEventListener("click", () => {
+            allFiles.splice(index, 1);
+            renderFiles();
+            updateInputFiles();
+        });
+
+        card.appendChild(removeBtn);
 
 
         card.appendChild(imageElement);
         card.appendChild(filenameElement);
         filenamesContainer.appendChild(card);
-        // filenamesContainer.appendChild(filenameElement);
-    }
-});
-
+    });
+}
+function updateInputFiles() {
+    const dataTransfer = new DataTransfer();
+    allFiles.forEach(file => dataTransfer.items.add(file));
+    fileInput.files = dataTransfer.files;
+}
 
 let slideIndex = 1;
 showSlides(slideIndex);
