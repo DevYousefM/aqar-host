@@ -11,11 +11,11 @@
                 @include('components.includes_user.error')
                 @include('components.includes_user.success')
                 @include('components.includes_user.message')
-                <div class="p-6 text-gray-900 " style="display: flex;gap: 10px">
+                <div class="p-6 text-gray-900 " style="display: flex;gap: 5px;flex-wrap:wrap;">
                     <?php $count = 0; ?>
                     @foreach ($properties as $property)
-                        <div style="width: 20rem" class="rounded overflow-hidden shadow-lg">
-                            <img class="w-full" style="height: 10rem;"
+                        <div class="rounded overflow-hidden shadow-lg" style="width:23%">
+                            <img class="w-full" style="height: 10rem;width: 100%"
                                 src="{{ asset('property_images/' . $property->images[0]->path) }}">
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2 text-right">{{ $property->title }}
