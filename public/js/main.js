@@ -194,11 +194,12 @@ fileInput?.addEventListener("change", function (event) {
         card.classList.add("d-flex");
         card.classList.add("flex-column");
         card.classList.add("gap-2");
+        card.classList.add("col-5");
+
         let file = selectedFiles[i];
         let imageElement = document.createElement("img");
         imageElement.src = URL.createObjectURL(file);
-        imageElement.width = 100;
-
+        imageElement.style = "width:100%;height:unset !important";
         let filename = selectedFiles[i].name;
         let filenameElement = document.createElement("div");
         filenameElement.textContent = filename;
