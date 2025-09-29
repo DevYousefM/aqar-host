@@ -166,7 +166,7 @@
                     @error('images')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
-                    <div id="imageFilenames" class="d-flex gap-3"></div>
+                    <div id="imageFilenames" class="w-75 d-flex gap-3 flex-wrap"></div>
                     @if ($errors->has('images.*'))
                         <ul>
                             @foreach ($errors->get('images.*') as $index => $errorMessages)
