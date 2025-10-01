@@ -27,7 +27,7 @@
                                         <i class="fa fa-eye"></i>
                                     </x-primary-button>
                                 </a>
-                                <a href="{{ route('property.deleteByUser', $property->id) }}">
+                                <a href="javascript:void(0);" onclick="confirmDelete({{ $property->id }})">
                                     <x-primary-button>
                                         <i class="fa fa-trash"></i>
                                     </x-primary-button>
@@ -108,6 +108,18 @@
         </div>
     </div>
 </x-app-layout>
+<div id="deleteConfirmModal"
+    style="display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+    <div style="background-color: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center;">
+        <p style="margin-bottom: 20px;">هل أنت متأكد أنك تريد حذف هذا العقار؟</p>
+        <form id="deleteForm" method="POST" action="">
+            @csrf
+            @method('DELETE')
+            <x-primary-button type="submit" style="background-color: red;">نعم، احذف</x-primary-button>
+            <x-primary-button type="button" onclick="closeModal()">إلغاء</x-primary-button>
+        </form>
+    </div>
+</div>
 
 <script>
     let plans;
@@ -119,5 +131,24 @@
 
     window.onclick = (e) => {
         e.target.classList.contains("plans-container") ? e.target.style.display = "none" : null;
+    }
+</script>
+<script>
+    function confirmDelete(propertyId) {
+        const modal = document.getElementById('deleteConfirmModal');
+        const form = document.getElementById('deleteForm');
+        form.action = "{{ route('property.deleteByUser', ':propertyId') }}".replace(':propertyId', propertyId);
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('deleteConfirmModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('deleteConfirmModal');
+        if (event.target === modal) {
+            closeModal();
+        }
     }
 </script>

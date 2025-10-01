@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-property/{id}', [PropertyController::class, 'editByUser'])->name('property.editByUser');
     Route::post('/store-property', [PropertyController::class, 'store'])->name('property.store');
     Route::post('/update-property/{id}', [PropertyController::class, 'updateByUser'])->name('property.update');
-    Route::get('/delete-property/{id}', [PropertyController::class, 'deleteByUser'])->name('property.deleteByUser');
+    Route::delete('/delete-property/{id}', [PropertyController::class, 'deleteByUser'])->name('property.deleteByUser');
 
     Route::post("make-request", [UserPlansRequestsController::class, "store"])->name("make.property.request");
     Route::get("show-requests", [UserPlansRequestsController::class, "show_requests"])->name("show.property.request");
